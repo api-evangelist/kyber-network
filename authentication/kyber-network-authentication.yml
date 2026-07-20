@@ -1,0 +1,55 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide/start-here/rate-limits-and-client-id
+docs: https://docs.kyberswap.com/developer-guide/start-here
+summary: >-
+  KyberSwap's three public APIs require no authentication. There are no API
+  keys, tokens or secrets. Callers instead identify themselves with an
+  x-client-id header, which is an attribution and rate-limit-tiering mechanism
+  rather than a credential. Authorization is enforced on-chain: state-changing
+  actions are authorized by the user's own wallet signature (EIP-712 for limit
+  orders, EIP-2612/EIP-4494 permits for token approvals), never by the API.
+authenticated: false
+schemes:
+- type: none
+  applies_to:
+  - aggregator
+  - limit-order
+  - zaas
+  evidence: >-
+    "KyberSwap APIs do not require authentication. There are no API keys,
+    tokens, or secrets."
+client_identification:
+- header: x-client-id
+  required: recommended on every request; documented as required on the Aggregator
+    V1 route and route/build endpoints
+  value: your application or company name
+  purpose: rate-limit tiering and integration attribution
+  example: 'x-client-id: MyAwesomeApp'
+  grpc_equivalent: X-Client-ID
+  whitelisting: >-
+    Contact business@kyber.network (also published as bd@kyber.network in the
+    ZaaS proto contact block) to have a client id whitelisted for a higher rate
+    limit tier.
+- header: Origin
+  required: conditional
+  purpose: >-
+    The Limit Order API returns HTTP 401 when a required Origin header is absent
+    or invalid.
+  evidence: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference/error-code-reference
+on_chain_authorization:
+- mechanism: EIP-712 typed-data signature
+  used_for: limit order creation, gasless cancellation, operator co-signing
+  notes: The signature must match the Maker's address; error 4004 (invalid signature)
+    and 4202 (invalid cancel signature) enforce this.
+- mechanism: EIP-2612 permit (ERC-20)
+  used_for: gasless token approval prior to a swap or zap
+  docs: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/permit
+- mechanism: EIP-4494 permit (NFT)
+  used_for: approving a liquidity position NFT for a zap in a single transaction
+  contract: KSZapRouterPositionPermit
+custody: >-
+  No KyberSwap API or the first-party MCP server ever holds private keys. Build
+  endpoints return unsigned calldata for the caller's wallet to sign.
+oauth: false
+scopes: not applicable — no OAuth surface
