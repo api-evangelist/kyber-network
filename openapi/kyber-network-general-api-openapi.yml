@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: KyberSwap Aggregator General API
+  version: 2.12.1
+servers:
+- url: https://aggregator-api.kyberswap.com
+tags:
+- name: General
+paths:
+  /read-ks/api/v1/configs/contract-address:
+    get:
+      summary: Get Limit Order Contract Addresses
+      tags:
+      - General
+      operationId: get-read-ks-api-v1-configs-contract-address
+      description: Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: chainId
+        description: The chainId of the network to query.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: object
+                    required:
+                    - latest
+                    - features
+                    properties:
+                      latest:
+                        type: string
+                        description: The latest limit order contract address.
+                      features:
+                        type: object
+                        description: The limit order contract address.
+                        additionalProperties:
+                          type: object
+                          required:
+                          - supportDoubleSignature
+                          properties:
+                            supportDoubleSignature:
+                              type: boolean
+                              description: Whether the contract supports gasless cancellations (i.e. double signature = maker signature + operator signature).
+        '400':
+          description: 'Bad Request
+
+            - Missing required field
+
+            - chainId is not supported'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /read-partner/api/v1/orders/pairs:
+    get:
+      summary: Get Chain Supported Pairs
+      tags:
+      - General
+      operationId: get-read-partner-api-v1-orders-pairs
+      description: Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: chainId
+        description: The chainId of the network to query.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: object
+                    required:
+                    - pairs
+                    properties:
+                      pairs:
+                        type: array
+                        description: The supported token pairs.
+                        items:
+                          type: object
+                          required:
+                          - makerAsset
+                          - takerAsset
+                          properties:
+                            makerAsset:
+                              type: string
+                              description: The token address of the asset which the Maker is selling.
+                            takerAsset:
+                              type: string
+                              description: The token address of the asset which the Maker expects in return.
+        '400':
+          description: 'Bad Request
+
+            - Missing required field
+
+            - chainId is not supported'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error message
+        errorEntities:
+          type: array
+          items:
+            type: string
+      required:
+      - code
+      - message
+      - errorEntities

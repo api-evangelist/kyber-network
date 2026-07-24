@@ -1,0 +1,488 @@
+openapi: 3.0.0
+info:
+  title: KyberSwap Aggregator General Taker API
+  version: 2.12.1
+servers:
+- url: https://aggregator-api.kyberswap.com
+tags:
+- name: Taker
+paths:
+  /read-ks/api/v1/encode/fill-batch-orders-to:
+    post:
+      summary: Generate Encoded Data To Fill Batch Order
+      tags:
+      - Taker
+      operationId: post-read-ks-api-v1-encode-fill-batch-orders-to
+      description: Request for the encoded fill batch order data from KyberSwap. This data can then be executed on-chain from the signer's wallet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - orderIds
+              - takingAmount
+              - thresholdAmount
+              - target
+              - operatorSignatures
+              properties:
+                orderIds:
+                  type: array
+                  description: The order IDs to be filled in the batch order.
+                  items:
+                    type: integer
+                takingAmount:
+                  type: string
+                  description: The amount of `takerAsset` in wei. String representation of uint256 value.
+                thresholdAmount:
+                  type: string
+                  description: "If thresholdAmount != 0, the order will be filled \nif and only if (actualTakingAmount / actualMakingAmount) <= (thresholdAmount / requestedMakingAmount)."
+                target:
+                  type: string
+                  description: The Taker wallet address which will receive the `makerAsset`.
+                operatorSignatures:
+                  type: array
+                  description: The Operator signature obtained from `/read-partner/api/v1/orders/operator-signature`. The order must be signed by the operator before it can be filled. Operator signature order must match `orderIds`.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: object
+                    required:
+                    - encodedData
+                    properties:
+                      encodedData:
+                        type: string
+                        description: The fill batch order encoded data to be used as the on-chain tx call data.
+        '400':
+          description: 'Bad Request
+
+            - Missing required fields
+
+            - takingAmount, thresholdAmount is not uint256
+
+            - target is not ETH address'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Not Found
+
+            - Not found order'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: 'Conflict
+
+            - Duplicate order ids in request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /read-ks/api/v1/encode/fill-order-to:
+    post:
+      summary: Generate Encoded Data To Fill Order
+      tags:
+      - Taker
+      operationId: post-read-ks-api-v1-encode-fill-order-to
+      description: Request for the encoded fill order data from KyberSwap. This data can then be executed on-chain from the signer's wallet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - orderId
+              - takingAmount
+              - thresholdAmount
+              - target
+              - operatorSignature
+              properties:
+                orderId:
+                  type: integer
+                  description: The ID of the order to be filled.
+                takingAmount:
+                  type: string
+                  description: The amount of `takerAsset` in wei. String representation of uint256 value.
+                thresholdAmount:
+                  type: string
+                  description: "If thresholdAmount != 0, the order will be filled \nif and only if (actualTakingAmount / actualMakingAmount) <= (thresholdAmount / requestedMakingAmount)."
+                target:
+                  type: string
+                  description: The Taker wallet address which will receive the `makerAsset`.
+                operatorSignature:
+                  type: string
+                  description: The Operator signature obtained from `/read-partner/api/v1/orders/operator-signature`. The order must be signed by the operator before it can be filled.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: object
+                    required:
+                    - encodedData
+                    properties:
+                      encodedData:
+                        type: string
+                        description: The fill order encoded data to be used as the on-chain tx call data.
+        '400':
+          description: 'Bad Request
+
+            - Missing required fields
+
+            - orderId is invalid format
+
+            - takingAmount, thresholdAmount is not uint256
+
+            - target is not ETH address'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Not Found
+
+            - Not found orderId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /read-partner/api/v1/orders:
+    get:
+      summary: Get Orders By Token Pair
+      tags:
+      - Taker
+      operationId: get-read-partner-api-v1-orders
+      description: Returns orders for the queried token pair sorted by best rates in descending order.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: chainId
+        description: The chainId of the network to query.
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: makerAsset
+        description: The token address of the asset which the Taker expects in return.
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: takerAsset
+        description: The token address of the asset which the Taker is exchanging.
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: object
+                    required:
+                    - orders
+                    properties:
+                      orders:
+                        type: array
+                        items:
+                          type: object
+                          required:
+                          - id
+                          - chainId
+                          - signature
+                          - salt
+                          - makerAsset
+                          - takerAsset
+                          - maker
+                          - contractAddress
+                          - receiver
+                          - allowedSenders
+                          - makingAmount
+                          - takingAmount
+                          - filledMakingAmount
+                          - filledTakingAmount
+                          - feeConfig
+                          - feeRecipient
+                          - makerTokenFeePercent
+                          - makerAssetData
+                          - takerAssetData
+                          - getMakerAmount
+                          - getTakerAmount
+                          - predicate
+                          - permit
+                          - interaction
+                          - expiredAt
+                          - availableMakingAmount
+                          - makerBalanceAllowance
+                          properties:
+                            id:
+                              type: integer
+                              description: The limit order ID.
+                            chainId:
+                              type: string
+                              description: The chainId on which the order was created.
+                            signature:
+                              type: string
+                              description: The signed EIP712 message which created the Maker order.
+                            salt:
+                              type: string
+                              description: The randomized data fed as an additional input to the create order function.
+                            makerAsset:
+                              type: string
+                              description: The token address of the asset which the Taker expects in return.
+                            takerAsset:
+                              type: string
+                              description: The token address of the asset which the Taker is exchanging.
+                            maker:
+                              type: string
+                              description: The address of the Maker.
+                            contractAddress:
+                              type: string
+                              description: The address of the Limit Order contract.
+                            receiver:
+                              type: string
+                              description: The address of the Taker to receive the `makerAsset`.
+                            allowedSenders:
+                              type: string
+                              description: Defines the addresses who are allowed to fill the order.
+                            makingAmount:
+                              type: string
+                              description: The amount of `makerAsset` in wei. String representation of uint256 value.
+                            takingAmount:
+                              type: string
+                              description: The amount of `takerAsset` in wei. String representation of uint256 value.
+                            filledMakingAmount:
+                              type: string
+                              description: The amount of `makerAsset` which has been filled for this order.
+                            filledTakingAmount:
+                              type: string
+                              description: The amount of `takerAsset` which has been filled for this order.
+                            feeConfig:
+                              type: string
+                              description: The hashstring representing the fee configuration for the order.
+                            feeRecipient:
+                              type: string
+                              description: The address to receive the fees, if any. Fees are configured in `makerTokenFeePercent`.
+                            makerTokenFeePercent:
+                              type: string
+                              description: 'Amount of makerToken paid by the taker to the `feeRecipient`. For example, 20% = 0.2 -> makerTokenFeePercent = 0.2 * 10000 = 2000
+
+                                Format: uint32'
+                            makerAssetData:
+                              type: string
+                              description: ABIv2 encoded data that can be decoded by a specified proxy contract when transferring makerAsset.
+                            takerAssetData:
+                              type: string
+                              description: ABIv2 encoded data that can be decoded by a specified proxy contract when transferring takerAsset.
+                            getMakerAmount:
+                              type: string
+                              description: The hexstring representing the `makerAsset` amount.
+                            getTakerAmount:
+                              type: string
+                              description: The hexstring representing the `takerAsset` amount.
+                            predicate:
+                              type: string
+                              description: Call data that indicates the validity of the orders logic.
+                            permit:
+                              type: string
+                              description: Included data if token is able to leverage Permit function (EIP2612) for gasless approvals.
+                            interaction:
+                              type: string
+                              description: Call data that is sent to an intermediate contract when the order is filled.
+                            expiredAt:
+                              type: integer
+                              description: The unix timestamp upon which the Maker order will automatically lapse (i.e. expire).
+                            availableMakingAmount:
+                              type: string
+                              description: The remaining makingAmount available to be filled
+                            makerBalanceAllowance:
+                              type: string
+                              description: The smaller value between maker's balance for makerAsset and maker's allowance for DSLO contract to spend makerAsset
+        '400':
+          description: 'Bad Request
+
+            - Missing required fields'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Internal Server Error
+
+            - Error when get price from Price Service'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /read-partner/api/v1/orders/operator-signature:
+    get:
+      summary: Request Operator Signature For Maker Orders
+      tags:
+      - Taker
+      operationId: post-read-partner-api-v1-orders-operator-signature
+      description: Takers will need to request for KyberSwap Operator signature for target Maker orders which they are planning to fill. The returned operator signature will be required when encoding the Taker fill order for both `/read-ks/api/v1/encode/fill-batch-orders-to` and `/read-ks/api/v1/encode/fill-order-to`.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: chainId
+        required: true
+        description: The chainId on which the order is being filled. Only supports EVM chains.
+      - schema:
+          type: string
+        in: query
+        name: orderIds
+        required: true
+        description: The order IDs to be cancelled gaslessly.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - code
+                - message
+                - data
+                properties:
+                  code:
+                    type: integer
+                    description: The response code.
+                  message:
+                    type: string
+                    description: Server response message.
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - chainId
+                      - operatorSignature
+                      - operatorSignatureExpiredAt
+                      properties:
+                        id:
+                          type: integer
+                          description: ID of Maker order to be filled.
+                        chainId:
+                          type: string
+                          description: Chain which order to be filled is on.
+                        operatorSignature:
+                          type: string
+                          description: The signature of the operator for the requested order id.
+                        operatorSignatureExpiredAt:
+                          type: integer
+                          description: The unix timestamp at which the Operator's signature expires.
+        '400':
+          description: 'Bad Request
+
+            - Missing required fields
+
+            - Orders don''t have the same maker or chainId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Not Found
+
+            - Not found order'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: 'Conflict
+
+            - Duplicate orderId in request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error message
+        errorEntities:
+          type: array
+          items:
+            type: string
+      required:
+      - code
+      - message
+      - errorEntities
