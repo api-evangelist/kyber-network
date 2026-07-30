@@ -1,22 +1,191 @@
 aid: kyber-network
 name: Kyber Network
-description: 'Kyber Network is a company surfaced as a portfolio company of pantera-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Kyber Network is the team behind KyberSwap, a multi-chain DeFi liquidity hub and DEX
+  aggregator that routes trades across indexed decentralized exchanges to source the best
+  available on-chain rate. It publishes three public, unauthenticated EVM APIs: the Aggregator
+  API for instant token swaps with dynamic trade routing, the Limit Order API for gasless
+  price-conditional trades using off-chain relay with on-chain settlement, and the Zap as a
+  Service (ZaaS) API for single-transaction concentrated liquidity provision, exit and
+  migration. KyberSwap also ships embeddable React swap and liquidity widgets, an RFC 9727
+  API catalog, an llms.txt documentation index, a first-party MCP server and a published
+  Agent Skills plugin, making it one of the more agent-ready providers in the DeFi category.
+  Governance runs through KyberDAO and the KNC token.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kyberswap.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/kyber-network/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - pantera-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: three documented public APIs with harvested OpenAPI, MCP server and agent skills
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Crypto
-apis: []
+- DeFi
+- Blockchain
+- Decentralized Exchange
+- Token Swap
+- Liquidity
+- Trading
+- Web3
+- Ethereum
+apis:
+- aid: kyber-network:kyber-network-general-api
+  name: Kyber Network General API
+  description: The General API from Kyber Network — 2 operation(s) for general.
+  humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
+  baseURL: https://aggregator-api.kyberswap.com
+  tags:
+  - General
+  properties:
+  - type: OpenAPI
+    url: openapi/kyber-network-general-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api
+  - type: APIReference
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+  - type: ErrorCatalog
+    url: errors/kyber-network-error-codes.yml
+  - type: Protobuf
+    url: grpc/kyber-network-zaas.proto
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
+- aid: kyber-network:kyber-network-maker-api
+  name: Kyber Network Maker API
+  description: The Maker API from Kyber Network — 8 operation(s) for maker.
+  humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
+  baseURL: https://aggregator-api.kyberswap.com
+  tags:
+  - Maker
+  properties:
+  - type: OpenAPI
+    url: openapi/kyber-network-maker-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api
+  - type: APIReference
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+  - type: ErrorCatalog
+    url: errors/kyber-network-error-codes.yml
+  - type: Protobuf
+    url: grpc/kyber-network-zaas.proto
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
+- aid: kyber-network:kyber-network-service-api
+  name: Kyber Network Service API
+  description: The Service API from Kyber Network — 3 operation(s) for service.
+  humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
+  baseURL: https://aggregator-api.kyberswap.com
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/kyber-network-service-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api
+  - type: APIReference
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+  - type: ErrorCatalog
+    url: errors/kyber-network-error-codes.yml
+  - type: Protobuf
+    url: grpc/kyber-network-zaas.proto
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
+- aid: kyber-network:kyber-network-swap-api
+  name: Kyber Network swap API
+  description: The swap API from Kyber Network — 3 operation(s) for swap.
+  humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
+  baseURL: https://aggregator-api.kyberswap.com
+  tags:
+  - swap
+  properties:
+  - type: OpenAPI
+    url: openapi/kyber-network-swap-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api
+  - type: APIReference
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+  - type: ErrorCatalog
+    url: errors/kyber-network-error-codes.yml
+  - type: Protobuf
+    url: grpc/kyber-network-zaas.proto
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
+- aid: kyber-network:kyber-network-taker-api
+  name: Kyber Network Taker API
+  description: The Taker API from Kyber Network — 4 operation(s) for taker.
+  humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
+  baseURL: https://aggregator-api.kyberswap.com
+  tags:
+  - Taker
+  properties:
+  - type: OpenAPI
+    url: openapi/kyber-network-taker-api-openapi.yml
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api
+  - type: APIReference
+    url: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+  - type: ErrorCatalog
+    url: errors/kyber-network-error-codes.yml
+  - type: Protobuf
+    url: grpc/kyber-network-zaas.proto
+  - type: Documentation
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api
+  - type: APIReference
+    url: >-
+      https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +194,66 @@ maintainers:
 common:
 - type: Website
   url: https://kyber.network/
+- type: DeveloperPortal
+  url: https://docs.kyberswap.com/developer-guide/start-here
+- type: Documentation
+  url: https://docs.kyberswap.com/
+- type: APIReference
+  url: https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification
+- type: GettingStarted
+  url: https://docs.kyberswap.com/developer-guide/start-here
+- type: Support
+  url: https://discord.gg/kyberswap
+- type: Blog
+  url: https://blog.kyberswap.com/
+- type: GitHubOrganization
+  url: https://github.com/KyberNetwork
+- type: SignUp
+  url: https://kyberswap.com/swap
+- type: Pricing
+  url: https://docs.kyberswap.com/getting-started/fee-schedule
+- type: StatusPage
+  url: lifecycle/kyber-network-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/kyber-network-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/kyber-network-lifecycle.yml
+- type: RateLimits
+  url: rate-limits/kyber-network-rate-limits.yml
+- type: Authentication
+  url: authentication/kyber-network-authentication.yml
+- type: Conventions
+  url: conventions/kyber-network-conventions.yml
+- type: ErrorCatalog
+  url: errors/kyber-network-error-codes.yml
+- type: Packages
+  url: packages/kyber-network-packages.yml
+- type: SDKs
+  url: packages/kyber-network-packages.yml
+- type: Components
+  url: components/kyber-network-components.yml
+- type: MCPServer
+  url: mcp/kyber-network-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/kyber-network-llms.txt
+- type: WellKnown
+  url: well-known/kyber-network-well-known.yml
+- type: APICatalog
+  url: well-known/kyber-network-api-catalog.json
+- type: ContentSignal
+  url: well-known/kyber-network-content-signals.txt
+- type: Protobuf
+  url: grpc/kyber-network-zaas.proto
+- type: Conformance
+  url: conformance/kyber-network-conformance.yml
+- type: Compliance
+  url: conformance/kyber-network-conformance.yml
+- type: DomainSecurity
+  url: security/kyber-network-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
