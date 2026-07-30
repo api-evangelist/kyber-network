@@ -1,0 +1,115 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/security/audits + KyberSwap developer documentation
+summary: >-
+  KyberSwap's assurance posture is crypto-native: rather than enterprise
+  compliance certifications, it publishes named third-party smart contract
+  audits, audit contests and a bug bounty program. On the API side it conforms
+  to a small set of web and Ethereum standards, and notably publishes an RFC
+  9727 API catalog — still rare across the network.
+standards:
+- id: rfc9727
+  name: API Catalog (/.well-known/api-catalog)
+  conforms: true
+  evidence: https://kyberswap.com/.well-known/api-catalog returns 200 with a valid linkset
+    covering all three public API hosts.
+- id: rfc9116
+  name: security.txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every probed host.
+- id: rfc9457
+  name: Problem Details for HTTP APIs
+  conforms: false
+  evidence: Errors use a proprietary '{code, message}' envelope rather than application/problem+json.
+- id: rfc8594
+  name: Sunset header
+  conforms: false
+  evidence: No Sunset or Deprecation response headers are documented.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: The APIs are unauthenticated; no OAuth surface exists.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404.
+- id: grpc
+  name: gRPC / Protocol Buffers
+  conforms: true
+  evidence: ZaaS publishes a complete proto3 service definition (package zap.v1) served
+    at zap-api.kyberswap.com:443.
+- id: openapi
+  name: OpenAPI description
+  conforms: partial
+  evidence: No OpenAPI document is published for the HTTP APIs, but the ZaaS proto carries
+    grpc-gateway openapiv2 annotations from which a Swagger 2.0 document can be generated.
+- id: content-signals
+  name: Content Signals (robots.txt)
+  conforms: true
+  evidence: 'kyberswap.com declares "ai-train=no, search=yes, ai-input=yes"; docs.kyberswap.com
+    declares "ai-train=yes, search=yes, ai-input=yes".'
+- id: llmstxt
+  name: llms.txt
+  conforms: true
+  evidence: https://docs.kyberswap.com/llms.txt returns a complete documentation index.
+- id: mcp
+  name: Model Context Protocol
+  conforms: true
+  evidence: First-party MCP server published at https://github.com/KyberNetwork/kyberswap-mcp
+    with 13 tools.
+- id: eip712
+  name: EIP-712 typed structured data signing
+  conforms: true
+  evidence: Limit order creation, cancellation and operator co-signing are all authorized
+    by EIP-712 signatures.
+- id: eip2612
+  name: EIP-2612 permit (ERC-20 gasless approval)
+  conforms: true
+  evidence: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/permit
+- id: eip4494
+  name: EIP-4494 permit (ERC-721 gasless approval)
+  conforms: true
+  evidence: Supported by the KSZapRouterPositionPermit contract for single-transaction
+    zaps.
+- id: soc2
+  name: SOC 2
+  conforms: false
+  evidence: No SOC 2 report or trust center is published.
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: false
+  evidence: No ISO 27001 certification is published.
+- id: pci-dss
+  name: PCI DSS
+  conforms: false
+  evidence: Not applicable — KyberSwap handles no card data.
+security_assurance_program:
+  published: true
+  url: https://docs.kyberswap.com/security/audits
+  type: third-party smart contract audits, audit contests and a bug bounty program
+  caveat: >-
+    These are on-chain security assurances, not enterprise compliance
+    certifications. No SOC 2 / ISO 27001 / PCI attestation exists.
+  audits:
+  - firm: Hacken
+    scope: KyberDAO & KNC token contract
+    date: '2021-05-18'
+    result: No issues detected; contract rated "Well-secured".
+    url: https://hacken.io/audits/kyber-network/
+  - firm: Omniscia
+    scope: KyberSwap FairFlow hook contracts
+    url: https://omniscia.io/reports/kyber-network-uniswap-v4-hooks-68163cf266222800187026b8/
+  - firm: Spearbit (via Cantina)
+    scope: KyberSwap FairFlow hook contracts
+    url: https://cantina.xyz/portfolio/eb59f23b-ef3c-4b3c-9d28-3455d5337d3f
+  - firm: Hexens
+    scope: Smart Intent protocol, focusing on Smart Exit
+    date: '2025-12'
+    url: https://hexens.io/audit-reports/kyber-network-smart-intent-protocol-dec-2025
+  bug_bounty:
+    mentioned: true
+    platform_page_found: false
+    notes: >-
+      The audits page describes "a consistently evolving bug bounty program" but
+      no program page was located on HackerOne, Bugcrowd or Immunefi, and no
+      security.txt advertises a disclosure channel.

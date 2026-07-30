@@ -1,0 +1,84 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide/start-here
+docs: https://docs.kyberswap.com/developer-guide/start-here
+summary: >-
+  Cross-cutting semantics shared by the three KyberSwap APIs. All are EVM-only,
+  unauthenticated, versioned in the URL path, and scoped to a chain identifier
+  carried either as a path segment (HTTP) or a header (gRPC).
+authentication:
+  style: none
+  client_identification: x-client-id header
+  detail: authentication/kyber-network-authentication.yml
+chain_scoping:
+  http:
+    style: path segment
+    pattern: /{chain}/api/v1/...
+    values: chain name strings such as ethereum, bsc, arbitrum, polygon, optimism, avalanche,
+      base, linea, mantle, sonic, berachain, ronin, unichain, hyperevm, plasma, etherlink,
+      monad, megaeth
+  grpc:
+    style: header
+    header: X-Chain-ID
+    values: numeric EVM chain ids (1 ethereum, 56 bsc, 137 polygon, 8453 base, 42161
+      arbitrum, 43114 avalanche, 10 optimism, 59144 linea, 146 sonic, 80094 berachain,
+      2020 ronin)
+  docs: https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks
+versioning:
+  style: URI path
+  current: v1
+  pattern: /api/v1/
+  legacy: >-
+    The Aggregator exposes a pre-v1 endpoint at /{chain}/route/encode. It remains
+    documented as the Legacy API and the docs publish an explicit "Upgrading To
+    APIv1" migration guide.
+  proto_version: 1.2.0 (Zap Service, declared in the openapiv2 annotation of zap.v1)
+  detail: lifecycle/kyber-network-lifecycle.yml
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency key header or replay-safe retry mechanism is documented on any
+    of the three APIs. Safety is instead achieved on-chain: build endpoints are
+    read-only and return unsigned calldata, and the actual state change is a
+    signed blockchain transaction whose nonce provides replay protection. Do not
+    assume POST /write/api/v1/orders is safe to blindly retry.
+pagination:
+  documented: false
+  notes: >-
+    Order query endpoints accept filter parameters rather than a documented
+    cursor or page envelope. No standard pagination convention is published.
+errors:
+  envelope: '{ "code": <int>, "message": "<string>" }'
+  format: proprietary numeric codes (not RFC 9457)
+  detail: errors/kyber-network-error-codes.yml
+rate_limiting:
+  signal: HTTP 429 only; no RateLimit-* response headers documented
+  detail: rate-limits/kyber-network-rate-limits.yml
+request_tracing:
+  request_id_header: not documented
+  correlation: x-client-id is the only caller-supplied correlation value
+content_type:
+  request: application/json
+  response: application/json
+freshness:
+  route_cache_ttl: 5-10 seconds (client-side maximum recommended by the provider)
+  rationale: quotes reflect live on-chain liquidity and go stale quickly
+gasless_patterns:
+- name: off-chain relay, on-chain settlement
+  applies_to: limit-order
+  description: Orders are signed off-chain via EIP-712 and relayed by KyberSwap; only
+    settlement touches the chain.
+- name: gasless cancellation
+  applies_to: limit-order
+  description: A maker can cancel by instructing the KyberSwap Operator to stop co-signing,
+    with no gas fee. A hard on-chain cancel is also available.
+- name: permit
+  applies_to: aggregator, zaas
+  description: EIP-2612 (ERC-20) and EIP-4494 (NFT) permit signatures replace a separate
+    approval transaction.
+cross_references:
+  authentication: authentication/kyber-network-authentication.yml
+  errors: errors/kyber-network-error-codes.yml
+  lifecycle: lifecycle/kyber-network-lifecycle.yml
+  rate_limits: rate-limits/kyber-network-rate-limits.yml
+  well_known: well-known/kyber-network-well-known.yml

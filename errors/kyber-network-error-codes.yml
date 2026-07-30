@@ -1,0 +1,129 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference/error-code-reference
+docs: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference/error-code-reference
+format: proprietary
+notes: >-
+  KyberSwap does not use RFC 9457 problem+json. Errors are returned as a flat
+  JSON envelope with a numeric application code and a human-readable message.
+  The Limit Order API publishes the fullest registry; the Aggregator API
+  documents the same envelope with its own 4001-4011 and 4221 ranges.
+envelope:
+  media_type: application/json
+  shape: '{ "code": <int>, "message": "<string>" }'
+  fields:
+  - name: code
+    type: integer
+    description: Application-level error code. Ranges are grouped by lifecycle stage.
+  - name: message
+    type: string
+    description: Human-readable description of the failure.
+http_statuses:
+- status: 200
+  meaning: OK
+  remediation: Request succeeded.
+- status: 400
+  meaning: Bad Request
+  remediation: Missing or invalid parameters. Check the message field in the response
+    body.
+- status: 401
+  meaning: Unauthorized
+  remediation: Invalid or missing authentication. Ensure the Origin header is set where
+    required.
+- status: 404
+  meaning: Not Found
+  remediation: Order ID or resource does not exist.
+- status: 429
+  meaning: Too Many Requests
+  remediation: Rate limit exceeded.
+- status: 500
+  meaning: Internal Server Error
+  remediation: Unexpected server error. Retry with exponential backoff.
+code_ranges:
+- range: 4001-4007
+  group: order creation
+  api: limit-order
+- range: 4100-4101
+  group: order query
+  api: limit-order
+- range: 4200-4202
+  group: cancellation
+  api: limit-order
+- range: 4300-4302
+  group: fill
+  api: limit-order
+- range: 4001-4011
+  group: route request validation
+  api: aggregator
+- range: '4221'
+  group: unprocessable route request
+  api: aggregator
+error_codes:
+- code: 4001
+  group: order creation
+  message: Invalid chain ID
+  remediation: The chainId is not supported.
+- code: 4002
+  group: order creation
+  message: Invalid maker asset
+  remediation: The makerAsset address is not a valid ERC-20 on the specified chain.
+- code: 4003
+  group: order creation
+  message: Invalid taker asset
+  remediation: The takerAsset address is not a valid ERC-20 on the specified chain.
+- code: 4004
+  group: order creation
+  message: Invalid signature
+  remediation: The EIP-712 signature does not match the Maker's address.
+- code: 4005
+  group: order creation
+  message: Order expired
+  remediation: The expiredAt timestamp is in the past.
+- code: 4006
+  group: order creation
+  message: Making amount too low
+  remediation: The makingAmount is below the minimum accepted value.
+- code: 4007
+  group: order creation
+  message: Insufficient allowance
+  remediation: The Limit Order contract does not have sufficient allowance to cover
+    all active orders.
+- code: 4100
+  group: order query
+  message: Order not found
+  remediation: No order exists for the provided ID.
+- code: 4101
+  group: order query
+  message: Invalid status filter
+  remediation: The status parameter is not one of active, open, cancelled, filled, expired.
+- code: 4200
+  group: cancellation
+  message: Order already cancelled
+  remediation: The order was already cancelled and cannot be cancelled again.
+- code: 4201
+  group: cancellation
+  message: Order already filled
+  remediation: A filled order cannot be cancelled.
+- code: 4202
+  group: cancellation
+  message: Invalid cancel signature
+  remediation: The EIP-712 cancel signature does not match the Maker's address.
+- code: 4300
+  group: fill
+  message: Invalid operator signature
+  remediation: Operator signature is invalid or has expired. Fetch a fresh one and retry.
+- code: 4301
+  group: fill
+  message: Taking amount exceeds remaining
+  remediation: The requested takingAmount exceeds the remaining unfilled amount on the
+    order.
+- code: 4302
+  group: fill
+  message: Threshold not met
+  remediation: The fill would result in less makingAmount than thresholdAmount. Adjust
+    slippage or retry.
+agent_guidance:
+  skill: >-
+    KyberSwap publishes an error-handling agent skill covering API errors,
+    pre-transaction failures and on-chain reverts.
+  url: https://github.com/KyberNetwork/kyberswap-skills

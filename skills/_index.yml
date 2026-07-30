@@ -1,0 +1,122 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/ai-agent-hub/skills-for-local-agents
+summary: >-
+  KyberSwap publishes a first-party Agent Skills plugin for local coding agents
+  as part of its AI Agent Hub. This index records the provider's published
+  skills verbatim, and adds four API Evangelist packaged skills that ground the
+  same marquee flows in the operationIds harvested into openapi/.
+provider_published:
+  repository: https://github.com/KyberNetwork/kyberswap-skills
+  docs: https://docs.kyberswap.com/ai-agent-hub/skills-for-local-agents
+  install:
+  - method: claude-plugin
+    command: /install-plugin https://github.com/kyberswap/kyberswap-skills
+  - method: local
+    command: claude --plugin-dir /path/to/kyberswap-skills
+  - method: npx
+    command: npx skills add KyberNetwork/kyberswap-skills
+    note: currently supports the swap and price discovery skills
+  backing_apis:
+  - name: Aggregator API
+    host: aggregator-api.kyberswap.com
+    purpose: swap routing and calldata
+  - name: Token API
+    host: token-api.kyberswap.com
+    purpose: metadata, pricing, honeypot detection
+  - name: Earn Service
+    host: earn-service.kyberswap.com
+    purpose: pool and position data
+  skills:
+  - name: quote
+    group: price discovery
+    description: Get the best swap route and expected output for a token pair. Includes
+      gas estimates, route path, and safety checks.
+  - name: token-info
+    group: price discovery
+    description: Look up token metadata, live USD price, decimals, and security assessment
+      (honeypot/fee-on-transfer detection).
+  - name: pool-info
+    group: price discovery
+    description: Query liquidity pool details — TVL, 24h volume, fee tier, APR, LP APR,
+      and token pair info across all indexed DEXes.
+  - name: swap-build
+    group: swap lifecycle
+    description: Build a swap transaction with encoded calldata. Applies intelligent
+      slippage defaults.
+  - name: swap-simulate
+    group: swap lifecycle
+    description: Dry-run a swap transaction using cast call — no gas spent, no state
+      changed.
+  - name: swap-execute
+    group: swap lifecycle
+    description: Broadcast a built swap transaction on-chain via Foundry's cast send.
+  - name: swap-status
+    group: swap lifecycle
+    description: Check whether a submitted transaction succeeded or failed.
+  - name: swap-approve
+    group: swap lifecycle
+    description: Manage ERC-20 token approvals for the KyberSwap router.
+  - name: swap-execute-fast
+    group: fast path
+    description: Build and execute a swap in one step with no confirmation prompts.
+  - name: limit-order-fast
+    group: fast path
+    description: Sign and create a limit order in one step with no confirmation.
+  - name: zap-fast
+    group: fast path
+    description: Build and execute a zap in one step with no confirmation.
+  - name: limit-order
+    group: limit orders and liquidity
+    description: Create, query, and cancel gasless limit orders signed off-chain via
+      EIP-712.
+  - name: order-manager
+    group: limit orders and liquidity
+    description: View and analyze limit orders across all statuses — open, partially
+      filled, filled, cancelled.
+  - name: zap
+    group: limit orders and liquidity
+    description: Zap into or out of concentrated liquidity positions in one transaction.
+  - name: position-manager
+    group: limit orders and liquidity
+    description: View and analyze DeFi liquidity positions — in-range/out-of-range status,
+      APR, fees.
+  - name: error-handling
+    group: diagnostics
+    description: Comprehensive error diagnosis covering API errors, pre-transaction failures,
+      and on-chain reverts.
+packaged:
+  method: generated
+  grounded_in: openapi/
+  note: >-
+    Every operationId referenced below was harvested from the OpenAPI documents
+    KyberSwap embeds in its own API reference pages. None are invented.
+  skills:
+  - file: kyber-network-swap-with-aggregator.md
+    name: swap-with-aggregator
+    api: aggregator
+    operations:
+    - get-route
+    - post-route-encoded
+  - file: kyber-network-place-limit-order.md
+    name: place-limit-order
+    api: limit-order
+    operations:
+    - post-write-api-v1-orders-sign-message
+    - post-write-api-v1-orders
+    - get-read-ks-api-v1-orders
+  - file: kyber-network-cancel-limit-order.md
+    name: cancel-limit-order
+    api: limit-order
+    operations:
+    - post-write-api-v1-orders-cancel-sign
+    - post-write-api-v1-orders-cancel
+    - post-read-ks-api-v1-encode-cancel-batch-orders
+    - post-read-ks-api-v1-encode-increase-nonce
+  - file: kyber-network-zap-into-liquidity.md
+    name: zap-into-liquidity
+    api: zaas
+    operations:
+    - Service_GetInRoute
+    - Service_GetOutRoute
+    - Service_GetMigrateRoute

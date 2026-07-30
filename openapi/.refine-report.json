@@ -1,0 +1,32 @@
+{
+  "provider": "kyber-network",
+  "sources": [
+    "kyber-network-general-api-openapi.yml",
+    "kyber-network-maker-api-openapi.yml",
+    "kyber-network-service-api-openapi.yml",
+    "kyber-network-swap-api-openapi.yml",
+    "kyber-network-taker-api-openapi.yml"
+  ],
+  "outputs": [
+    "kyber-network-general-api-openapi.yml",
+    "kyber-network-maker-api-openapi.yml",
+    "kyber-network-service-api-openapi.yml",
+    "kyber-network-swap-api-openapi.yml",
+    "kyber-network-taker-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4001",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4002",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4005",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4007",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4008",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4009",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4010",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4011",
+    "kyber-network-swap-api-openapi.yml: dangling $ref: #/components/errors/4221"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

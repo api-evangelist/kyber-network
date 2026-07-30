@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide/start-here/rate-limits-and-client-id
+docs: https://docs.kyberswap.com/developer-guide/start-here/rate-limits-and-client-id
+summary: >-
+  Default rate limits are published per API and expressed in requests per
+  second. Limits are tiered by the x-client-id header — requests without a
+  consistent client id are subject to stricter limits. Higher tiers are granted
+  by whitelisting a client id through the business development team.
+limits:
+- api: aggregator
+  host: https://aggregator-api.kyberswap.com
+  default: 3 rps
+  unit: requests per second
+- api: limit-order
+  host: https://limit-order.kyberswap.com
+  default: 10 rps
+  unit: requests per second
+- api: zaas
+  host: https://zap-api.kyberswap.com
+  default: 1 rps
+  unit: requests per second
+tiering:
+  mechanism: x-client-id header
+  value: your application or company name
+  behavior: >-
+    Stricter limits apply when no clientId is supplied. Use the same identifier
+    consistently across both the GET route and POST route/build endpoints.
+  upgrade_contact: business@kyber.network
+  upgrade_process: Contact the business development team with your client identifier
+    for whitelisting consideration.
+exceeded:
+  http_status: 429
+  meaning: Too Many Requests
+  remediation: Rate limit exceeded. Retry with exponential backoff.
+response_headers:
+  documented: false
+  notes: >-
+    No RateLimit-* or X-RateLimit-* response headers are documented. Clients
+    should treat HTTP 429 as the only rate-limit signal.
+caching_guidance:
+  routes: >-
+    Do not cache routes client-side for more than 5-10 seconds — quotes go stale
+    as on-chain liquidity moves.
+  source: https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps

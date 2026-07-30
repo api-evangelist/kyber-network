@@ -1,0 +1,84 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of /.well-known/* across KyberSwap API and web hosts
+notes: >-
+  KyberSwap publishes an RFC 9727 API catalog at the kyberswap.com apex. It is
+  the authoritative machine-readable index of the three public APIs, and it
+  links each service to its description, docs, metadata and status page. No
+  security.txt, OIDC or OAuth discovery documents are published — the APIs are
+  unauthenticated, so the OAuth/OIDC surfaces are legitimately absent.
+hosts:
+- host: https://kyberswap.com
+  documents:
+  - path: /.well-known/api-catalog
+    status: 200
+    file: kyber-network-api-catalog.json
+    spec: RFC 9727
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://kyber.network
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://aggregator-api.kyberswap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://limit-order.kyberswap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://zap-api.kyberswap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://docs.kyberswap.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+api_catalog:
+  file: kyber-network-api-catalog.json
+  spec: RFC 9727
+  url: https://kyberswap.com/.well-known/api-catalog
+  services:
+  - anchor: https://aggregator-api.kyberswap.com
+    service_desc: https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification/evm-swaps.md
+    service_doc: https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification
+    service_meta: https://docs.kyberswap.com/developer-guide/start-here/rate-limits-and-client-id
+    status: https://kyber.statuspage.io
+  - anchor: https://limit-order.kyberswap.com
+    service_desc: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference.md
+    service_doc: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+    service_meta: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference/error-code-reference
+    status: https://kyber.statuspage.io
+  - anchor: https://zap-api.kyberswap.com
+    service_desc: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference.md
+    service_doc: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference
+    service_meta: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/zaps-supported-chains-dexes
+    status: https://kyber.statuspage.io
+content_signals:
+  file: kyber-network-content-signals.txt
+  source: https://kyberswap.com/robots.txt
+  declarations:
+  - host: kyberswap.com
+    signal: 'ai-train=no, search=yes, ai-input=yes'
+  - host: docs.kyberswap.com
+    signal: 'ai-train=yes, search=yes, ai-input=yes'
+  interpretation: >-
+    The application host opts out of AI training while permitting search
+    indexing and AI inference-time input. The documentation host permits all
+    three, which is consistent with the provider's published AI Agent Hub.

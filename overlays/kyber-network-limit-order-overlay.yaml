@@ -1,0 +1,73 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for KyberSwap Limit Order API
+  version: 1.0.0
+extends: openapi/kyber-network-limit-order-openapi.yml
+x-generated: '2026-07-19'
+x-method: generated
+x-source: API Evangelist enrichment pipeline; facts harvested from KyberSwap documentation
+actions:
+- target: $.info
+  description: Record provider contact, docs and licence-free public access.
+  update:
+    contact:
+      name: KyberSwap Business Development
+      email: business@kyber.network
+      url: https://discord.gg/kyberswap
+    x-docs: https://docs.kyberswap.com/developer-guide/limit-order-api/api-reference
+    x-api-catalog: https://kyberswap.com/.well-known/api-catalog
+    x-status-page: https://kyber.statuspage.io
+- target: $.info
+  description: Document the unauthenticated access model and client identification header.
+  update:
+    x-authentication:
+      required: false
+      note: No API keys, tokens or secrets. Identify your client with the x-client-id header.
+      artifact: authentication/kyber-network-authentication.yml
+- target: $.info
+  description: Attach the published rate limit and its tiering mechanism.
+  update:
+    x-rate-limit:
+      default: 10 rps
+      tiered_by: x-client-id
+      exceeded: HTTP 429
+      upgrade_contact: business@kyber.network
+      artifact: rate-limits/kyber-network-rate-limits.yml
+- target: $.info
+  description: Attach the error catalog; errors are a proprietary {code,message} envelope, not RFC 9457.
+  update:
+    x-error-catalog:
+      format: proprietary
+      envelope: '{ "code": <int>, "message": "<string>" }'
+      artifact: errors/kyber-network-error-codes.yml
+- target: $.info
+  description: Flag the absence of an idempotency mechanism so agents do not assume safe retries.
+  update:
+    x-idempotency:
+      supported: false
+      note: No idempotency key. Build/quote operations are read-only and safe to retry; submissions are
+        not. Replay protection is the wallet nonce on-chain.
+      artifact: conventions/kyber-network-conventions.yml
+- target: $.servers
+  description: Confirm the production host advertised in the RFC 9727 API catalog.
+  update:
+  - url: https://limit-order.kyberswap.com
+    description: Production, advertised via https://kyberswap.com/.well-known/api-catalog
+- target: $.paths.*.*
+  description: Mark every operation as requiring the client identification header for full rate-limit
+    tiering.
+  update:
+    x-client-id-header: x-client-id
+- target: $.paths['/write/api/v1/orders/cancel'].post
+  description: Record that the Origin header is enforced on gasless cancel submission.
+  update:
+    x-required-origin: https://kyberswap.com
+    x-auth-note: Omitting the Origin header returns HTTP 401.
+- target: $.paths['/write/api/v1/orders/sign-message'].post
+  description: Record the EIP-712 signing step required between this call and order submission.
+  update:
+    x-signing:
+      standard: EIP-712
+      method: eth_signTypedData_v4
+      signer: maker
+      next-operation: post-write-api-v1-orders

@@ -1,0 +1,73 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://docs.kyberswap.com/ai-agent-hub/mcp-server-for-hosted-agents
+notes: >-
+  KyberSwap publishes a first-party MCP server as part of its AI Agent Hub. The
+  server never holds private keys — signing tools return unsigned transaction
+  data for the user's own wallet to sign. No API keys are required because the
+  underlying KyberSwap APIs are public.
+server:
+  name: kyberswap
+  transport: stdio
+  repository: https://github.com/KyberNetwork/kyberswap-mcp
+  sdk: '@modelcontextprotocol/sdk'
+  authentication: none
+  install:
+    claude_desktop_config:
+      mcpServers:
+        kyberswap:
+          command: node
+          args:
+          - /path/to/kyberswap-mcp/dist/index.js
+backing_apis:
+- https://aggregator-api.kyberswap.com
+- https://limit-order.kyberswap.com
+- https://zap-api.kyberswap.com
+- https://token-api.kyberswap.com
+- https://earn-service.kyberswap.com
+tools:
+- name: get-quote
+  description: Get the best swap route from the KyberSwap Aggregator, with rates, gas
+    estimates and warnings.
+  api: aggregator
+- name: token-info
+  description: Retrieve token metadata, live USD price, and security assessment.
+  api: token
+- name: get-pool-info
+  description: Query liquidity pools by TVL, volume and APR metrics.
+  api: earn
+- name: swap-build
+  description: Construct an unsigned swap transaction ready for external signing.
+  api: aggregator
+- name: swap-simulate
+  description: Dry-run a swap transaction via eth_call for validation.
+  api: aggregator
+- name: swap-status
+  description: Check on-chain transaction status and receipts.
+  api: aggregator
+- name: limit-order-build
+  description: Construct a gasless limit order with EIP-712 data.
+  api: limit-order
+- name: limit-order-submit
+  description: Submit signed limit orders.
+  api: limit-order
+- name: limit-order-cancel-build
+  description: Build gasless cancellations (90-second window).
+  api: limit-order
+- name: limit-order-cancel-submit
+  description: Submit signed cancellations.
+  api: limit-order
+- name: order-manager
+  description: Query limit orders for a wallet by status.
+  api: limit-order
+- name: position-manager
+  description: Monitor liquidity positions across chains.
+  api: earn
+- name: zap
+  description: Build concentrated liquidity transactions for adding or removing liquidity.
+  api: zaas
+safety:
+  custody: none
+  private_keys: never held by the server
+  signing: unsigned payloads returned to the caller's wallet

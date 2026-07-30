@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide + https://kyberswap.com/.well-known/api-catalog
+summary: >-
+  KyberSwap versions its HTTP APIs in the URI path and currently ships v1 across
+  all three services. A pre-v1 Aggregator endpoint is explicitly labelled the
+  Legacy API and carries a published migration guide. A shared status page is
+  advertised for all three services through the RFC 9727 API catalog.
+versioning:
+  style: URI path
+  current: v1
+  pattern: /api/v1/
+  proto_package: zap.v1
+  proto_version: 1.2.0
+status_page:
+  url: https://kyber.statuspage.io
+  status: 200
+  provider: Atlassian Statuspage
+  discovered_via: https://kyberswap.com/.well-known/api-catalog
+  covers:
+  - https://aggregator-api.kyberswap.com
+  - https://limit-order.kyberswap.com
+  - https://zap-api.kyberswap.com
+deprecation:
+  policy_published: false
+  sunset_header: not documented
+  deprecation_header: not documented
+  rfc8594: false
+  notes: >-
+    KyberSwap publishes no formal deprecation policy, and does not document
+    RFC 8594 Sunset/Deprecation response headers. Deprecation is communicated
+    editorially in the docs: the superseded Aggregator endpoint is labelled
+    "Legacy API" and paired with an explicit upgrade guide.
+  deprecated_surfaces:
+  - api: aggregator
+    operation: GET /{chain}/route/encode
+    label: Legacy API
+    superseded_by: GET /{chain}/api/v1/routes + POST /{chain}/api/v1/route/build
+    migration_guide: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/execute-a-swap-with-the-aggregator-api/upgrading-to-apiv1
+    rationale: More performant routing and encoding.
+    sunset_date: not announced
+sla:
+  published: false
+  notes: No uptime SLA or service credit terms are published for the free public APIs.
+changelog:
+  published: false
+  notes: >-
+    No dated changelog or release-notes feed was found on the documentation
+    host or the GitHub organization docs surface.
+support:
+  business_contact: business@kyber.network
+  developer_contact: bd@kyber.network
+  community: https://discord.gg/kyberswap
+  complaints_process: https://docs.kyberswap.com/support/complaints-handling-process

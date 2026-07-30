@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: searched
+source: npm registry + https://docs.kyberswap.com/developer-guide
+notes: >-
+  KyberSwap ships React component packages on npm under the @kyberswap scope
+  rather than conventional HTTP client SDKs — the three public APIs are
+  unauthenticated REST/gRPC and are called directly. Versions recorded are the
+  npm dist-tag "latest" at capture time.
+packages:
+- language: javascript
+  registry: npm
+  name: '@kyberswap/widgets'
+  version: 2.4.0
+  url: https://www.npmjs.com/package/@kyberswap/widgets
+  install: npm install @kyberswap/widgets
+  description: Embeddable swap widget powered by the KyberSwap aggregator; drop the
+    <Widget> component into any React app.
+  official: true
+- language: javascript
+  registry: npm
+  name: '@kyberswap/liquidity-widgets'
+  version: 1.1.31
+  url: https://www.npmjs.com/package/@kyberswap/liquidity-widgets
+  install: npm install @kyberswap/liquidity-widgets
+  description: React component to add or increase LP liquidity using the KyberSwap
+    Zap as a Service (ZaaS) API.
+  official: true
+- language: javascript
+  registry: npm
+  name: '@kyberswap/ks-sdk-core'
+  version: 1.1.17
+  url: https://www.npmjs.com/package/@kyberswap/ks-sdk-core
+  install: npm install @kyberswap/ks-sdk-core
+  description: Core SDK primitives used to build the KyberSwap Classic and Elastic
+    SDKs.
+  repository: https://github.com/KyberNetwork/dmm-sdk-core
+  official: true
+registries_probed:
+- registry: npm
+  result: 3 first-party packages found under the @kyberswap scope
+- registry: pypi
+  result: no first-party package found
+- registry: maven-central
+  result: no first-party package found
+- registry: nuget
+  result: no first-party package found
+- registry: pkg.go.dev
+  result: no first-party client library found
+- registry: rubygems
+  result: no first-party package found
+- registry: packagist
+  result: no first-party package found
+- registry: crates.io
+  result: no first-party package found
+related:
+- kind: mcp-server
+  repository: https://github.com/KyberNetwork/kyberswap-mcp
+- kind: agent-skills
+  repository: https://github.com/KyberNetwork/kyberswap-skills

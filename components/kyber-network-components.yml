@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.kyberswap.com/developer-guide
+summary: >-
+  KyberSwap ships two embeddable React component families that wrap its APIs —
+  a swap widget over the Aggregator API and a liquidity widget over the ZaaS
+  API. Both are plug-and-play, themeable, and are the provider's primary
+  integration path for partners who do not want to build their own front end.
+  An iframe alternative is documented for non-React hosts.
+families:
+- name: KyberSwap Widget
+  kind: embeddable react component
+  backing_api: aggregator
+  package: '@kyberswap/widgets'
+  registry: npm
+  url: https://www.npmjs.com/package/@kyberswap/widgets
+  version: 2.4.0
+  component: <Widget>
+  description: Embeddable swap widget powered by the KyberSwap aggregator; drop into
+    any React app to offer aggregated swap rates.
+  docs: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget
+  guides:
+  - title: Integrating The KyberSwap Widget
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget/integrating-the-kyberswap-widget
+  - title: Customizing The KyberSwap Widget
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget/customizing-the-kyberswap-widget
+  - title: iFrame Alternative
+    url: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget/iframe-alternative
+  customization:
+  - configurable trade routes
+  - configurable fees
+  - configurable themes
+  fees:
+    docs: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget/widget-iframe-fee
+    note: Widget and iframe integrations carry a fee structure that does not apply to
+      users trading directly on the KyberSwap.com UI.
+- name: KyberSwap Liquidity Widget
+  kind: embeddable react component
+  backing_api: zaas
+  package: '@kyberswap/liquidity-widgets'
+  registry: npm
+  url: https://www.npmjs.com/package/@kyberswap/liquidity-widgets
+  version: 1.1.31
+  description: React components providing a subset of the Zap Protocol functionality
+    in a small, configurable UI element for adding or increasing LP liquidity.
+  docs: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/how-to-guides/kyberswap-liquidity-widget
+  guides:
+  - title: Integrating The KyberSwap Liquidity Widget
+    url: https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/how-to-guides/kyberswap-liquidity-widget/integrating-the-kyberswap-liquidity-widget
+embed_alternatives:
+- kind: iframe
+  applies_to: KyberSwap Widget
+  docs: https://docs.kyberswap.com/developer-guide/aggregator-api/how-to-guides/kyberswap-widget/iframe-alternative
+  note: For hosts that cannot mount a React component.
