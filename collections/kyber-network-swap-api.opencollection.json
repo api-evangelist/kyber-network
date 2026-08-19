@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KyberSwap Aggregator General swap API",
+    "version": "2.12.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "swap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "[V1] Post Swap Route For Encoded Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/:chain/api/v1/route/build",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the swap's calldata to be sent to the KyberSwap router contract. The request body must contain the `routeSummary` as exactly returned by [V1] Get Swap Route along with the additional tx related parameters. Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks."
+        },
+        {
+          "info": {
+            "name": "[V1] Get Swap Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/:chain/api/v1/routes",
+            "headers": [
+              {
+                "name": "X-Client-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tokenIn",
+                "value": "",
+                "type": "query",
+                "description": "Address of the input token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+              },
+              {
+                "name": "tokenOut",
+                "value": "",
+                "type": "query",
+                "description": "Address of the output token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+              },
+              {
+                "name": "amountIn",
+                "value": "",
+                "type": "query",
+                "description": "Amount of the input token (in wei)"
+              },
+              {
+                "name": "includedSources",
+                "value": "",
+                "type": "query",
+                "description": "DEX IDs included in the route, separated by comma"
+              },
+              {
+                "name": "excludedSources",
+                "value": "",
+                "type": "query",
+                "description": "DEX IDs excluded from the route, separated by comma"
+              },
+              {
+                "name": "excludeRFQSources",
+                "value": "",
+                "type": "query",
+                "description": "Exclude RFQ sources"
+              },
+              {
+                "name": "onlyScalableSources",
+                "value": "",
+                "type": "query",
+                "description": "Exclude unscalable sources and only use sources that accept scaling input amounts"
+              },
+              {
+                "name": "onlyDirectPools",
+                "value": "",
+                "type": "query",
+                "description": "Only routes directly from tokenIn to tokenOut (without hop tokens)"
+              },
+              {
+                "name": "onlySinglePath",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether to only return single-path route"
+              },
+              {
+                "name": "gasInclude",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether gas costs are accounted for when searching for best route. Defaults to true"
+              },
+              {
+                "name": "gasPrice",
+                "value": "",
+                "type": "query",
+                "description": "Custom gas price in wei used when searching for the best swap route. Use result from eth_gasPrice otherwise"
+              },
+              {
+                "name": "feeAmount",
+                "value": "",
+                "type": "query",
+                "description": "Fee amount(s) to be collected.\nIf `isInBps` = `true`, `feeAmount` is the percentage of fees to take with base unit = 10000, i.e `feeAmount` = 10 and `isInBps` = `true` then fee = 0.1%;\nIf `isInBps` = `false`, `feeAmount` is the amount of token to take as fee, i.e `feeAmount` = 10 and `isInBps` = 'false' then fee = 10 token weis.\nIt also accepts a comma-separated list of numbers to support multiple fee receivers, for example: feeAmount=10,20\n"
+              },
+              {
+                "name": "chargeFeeBy",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that the API client wants to charge fee by input token (`currency_in`) or output token (`currency_out`).\nDefault is empty whereby no fee is charged.\n"
+              },
+              {
+                "name": "isInBps",
+                "value": "",
+                "type": "query",
+                "description": "if true, fee is taken in bps of the amount in/out, instead of absolute wei value\n"
+              },
+              {
+                "name": "feeReceiver",
+                "value": "",
+                "type": "query",
+                "description": "The API client's wallet address(es) to receive fee (if `chargeFeeBy` is not empty). It can accept a comma separated list of addresses to collect multiple fee amounts into multiple addresses"
+              },
+              {
+                "name": "origin",
+                "value": "",
+                "type": "query",
+                "description": "The origin address (user wallet) of the swap tx. Include this to get access to exclusive pools and rates"
+              }
+            ]
+          },
+          "docs": "Find the best route to swap from `tokenIn` to `tokenOut`, supporting all liquidity sources including RFQ. Use this API to get a route preview before confirming the swap. The route returned can then be combined with transaction specific params in the `POST` API payload to get the encoded data for submission to the KyberSwap router contract. Refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networ"
+        },
+        {
+          "info": {
+            "name": "Get Swap Info with Encoded Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/:chain/route/encode",
+            "headers": [
+              {
+                "name": "X-Client-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tokenIn",
+                "value": "",
+                "type": "query",
+                "description": "Address of the input token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+              },
+              {
+                "name": "tokenOut",
+                "value": "",
+                "type": "query",
+                "description": "Address of the output token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+              },
+              {
+                "name": "amountIn",
+                "value": "",
+                "type": "query",
+                "description": "Amount of the input token (in wei)"
+              },
+              {
+                "name": "dexes",
+                "value": "",
+                "type": "query",
+                "description": "DEX IDs included in the route, separated by comma"
+              },
+              {
+                "name": "onlyScalableSources",
+                "value": "",
+                "type": "query",
+                "description": "Exclude unscalable sources and only use sources that accept scaling input amounts"
+              },
+              {
+                "name": "gasInclude",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether gas costs are accounted for when searching for best route"
+              },
+              {
+                "name": "gasPrice",
+                "value": "",
+                "type": "query",
+                "description": "Custom gas price in wei used when searching for the best swap route. Use result from eth_gasPrice otherwise"
+              },
+              {
+                "name": "slippageTolerance",
+                "value": "",
+                "type": "query",
+                "description": "This is the amount of slippage the user can accept for his trade. The unit is bps (1/100 of 1%).\nThe value is in ranges [0, 2000], with 10 meaning 0.1%, and 0.1 meaning 0.001%.\nIf no value is provided, slippageTolerance will be set to 0.\n"
+              },
+              {
+                "name": "chargeFeeBy",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that the API client wants to charge fee by input token (`currency_in`) or output token (`currency_out`).\nDefault is empty whereby no fee is charged.\n"
+              },
+              {
+                "name": "feeReceiver",
+                "value": "",
+                "type": "query",
+                "description": "The API client's wallet address to receive fee (if `chargeFeeBy` is not empty)"
+              },
+              {
+                "name": "isInBps",
+                "value": "",
+                "type": "query",
+                "description": "if true, fee is taken in bps of the amount in/out, instead of absolute wei value\n"
+              },
+              {
+                "name": "feeAmount",
+                "value": "",
+                "type": "query",
+                "description": "Fee amount to be collected.\nIf `isInBps` = `true`, `feeAmount` is the percentage of fees to take with base unit = 10000, i.e `feeAmount` = 10 and `isInBps` = `true` then fee = 0.1%;\nIf `isInBps` = `false`, `feeAmount` is the amount of token to take as fee, i.e `feeAmount` = 10 and `isInBps` = 'false' then fee = 10 token weis\n"
+              },
+              {
+                "name": "deadline",
+                "value": "",
+                "type": "query",
+                "description": "Deadline (in Unix epoch second) for the transaction to be executed by. Default will be +20 minute. Cannot be in the past."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Address to receive the output token"
+              },
+              {
+                "name": "clientData",
+                "value": "",
+                "type": "query",
+                "description": "Json string to include your client id in the source field if header cannot be used"
+              },
+              {
+                "name": "referral",
+                "value": "",
+                "type": "query",
+                "description": "Referral info to include in the swap transaction's ClientData event."
+              },
+              {
+                "name": "permit",
+                "value": "",
+                "type": "query",
+                "description": "Encoded token's permit calldata to swap without approving.\nThe permit's spender should be the routerAddress returned in the [Get Swap Route](#get-route) API response. See /permit\n"
+              },
+              {
+                "name": "ignoreCappedSlippage",
+                "value": "",
+                "type": "query",
+                "description": "If true, the slippage tolerance can be any value. Please use with caution."
+              }
+            ]
+          },
+          "docs": "Retrieve the information about a Swap between 2 tokens with encoded data to submit to KyberSwap router contract. RFQ liquidity sources are not supported.\nPlease refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1706 @@
+{
+  "item": [
+    {
+      "id": "91112197-3c2b-4939-a63d-421facbbee5d",
+      "name": "Maker",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bc1d67d-0ccd-489f-8153-d8342d1a8d73",
+          "name": "Generate Encoded Data For Batch Cancellation",
+          "request": {
+            "name": "Generate Encoded Data For Batch Cancellation",
+            "description": {
+              "content": "Request for the cancellation encoded data from KyberSwap. This data can then be executed on-chain from the signer's wallet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-ks",
+                "api",
+                "v1",
+                "encode",
+                "cancel-batch-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56586c03-6a6a-47bc-aecd-2049b34cd931",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "cancel-batch-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 960,\n  \"message\": \"string\",\n  \"data\": {\n    \"encodedData\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1261e9e-8e79-415e-9e73-e5c9e5e23814",
+              "name": "Bad Request\n- Missing required fields\n- Orders don't have the same maker or chainId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "cancel-batch-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7243,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae0e32f5-5645-41dd-b0d9-1feb7b6c4f3b",
+              "name": "Not Found\n- Not found order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "cancel-batch-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e74f633d-aab8-4a50-8903-c33235adeb1a",
+              "name": "Conflict\n- Duplicate orderId in request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "cancel-batch-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4763270e-e55e-4d21-b411-0988b9bcbfa1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "cancel-batch-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9557466-10a7-4c33-a513-83d1fbe6cd0e",
+          "name": "Generate Encoded Data For Cancel All",
+          "request": {
+            "name": "Generate Encoded Data For Cancel All",
+            "description": {
+              "content": "Request for the cancel all encoded data from KyberSwap. By increasing the LO contract nonce tied to the Maker, the LO contract is able to nullify all existing orders. This data can then be executed on-chain from the Maker's wallet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-ks",
+                "api",
+                "v1",
+                "encode",
+                "increase-nonce"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4968dfe-0b1a-4534-9d13-721f9b21f9fd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "increase-nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1235,\n  \"message\": \"string\",\n  \"data\": {\n    \"encodedData\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab108e94-9545-4e97-9770-85ce1805e302",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "encode",
+                    "increase-nonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca03f3fa-6a1c-419d-9d33-fd7d8cc649bc",
+          "name": "Get List Of Orders By Maker",
+          "request": {
+            "name": "Get List Of Orders By Maker",
+            "description": {
+              "content": "Get all orders created by a Maker address filtered by the order status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-ks",
+                "api",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "(Required) The chainId on which the order is being created. Only supports EVM chains."
+                },
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "(Required) The address of the Maker."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) The status of the order to filter for:\n  - `active`: Order is active (both open and has been partially filled).\n  - `open`: Order is open and has yet to be filled.\n  - `partially_filled`: Order has been partially filled.\n  - `closed`: Order has been closed and can no longer be filled.\n  - `filled`: Order has been filled with no remaining assets to be filled.\n  - `cancelled`: Order was cancelled by the Maker and can no longer be filled.\n  - `expired`: Order can no longer be filled as the expiry set by the Maker is in the past."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Token symbol or token address. Search prefix for symbol, search exact for address."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Number of pages to return. Minimum and default is set at `1`."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Number of results to display per page. Minimum is `1` and maximum is `50`. Default is `10`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d41719d5-ca8f-42ed-8387-74c1923f7ffe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5821,\n  \"message\": \"string\",\n  \"data\": {\n    \"orders\": [\n      {\n        \"id\": 7633,\n        \"chainId\": \"string\",\n        \"nonce\": 5997,\n        \"makerAsset\": \"string\",\n        \"takerAsset\": \"string\",\n        \"makerAssetDecimals\": 9076,\n        \"makingAmount\": \"string\",\n        \"takingAmount\": \"string\",\n        \"status\": \"string\",\n        \"createdAt\": 7726,\n        \"expiredAt\": 6324,\n        \"makerAssetSymbol\": \"string\",\n        \"takerAssetSymbol\": \"string\",\n        \"takerAssetDecimals\": 3764,\n        \"makerAssetLogoURL\": \"string\",\n        \"takerAssetLogoURL\": \"string\",\n        \"filledMakingAmount\": \"string\",\n        \"filledTakingAmount\": \"string\",\n        \"transactions\": [\n          {\n            \"id\": 8241,\n            \"txHash\": \"string\",\n            \"txTime\": 5561,\n            \"makingAmount\": \"string\",\n            \"takingAmount\": \"string\"\n          },\n          {\n            \"id\": 8103,\n            \"txHash\": \"string\",\n            \"txTime\": 7093,\n            \"makingAmount\": \"string\",\n            \"takingAmount\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": 7144,\n        \"chainId\": \"string\",\n        \"nonce\": 1120,\n        \"makerAsset\": \"string\",\n        \"takerAsset\": \"string\",\n        \"makerAssetDecimals\": 984,\n        \"makingAmount\": \"string\",\n        \"takingAmount\": \"string\",\n        \"status\": \"string\",\n        \"createdAt\": 3899,\n        \"expiredAt\": 6660,\n        \"makerAssetSymbol\": \"string\",\n        \"takerAssetSymbol\": \"string\",\n        \"takerAssetDecimals\": 5813,\n        \"makerAssetLogoURL\": \"string\",\n        \"takerAssetLogoURL\": \"string\",\n        \"filledMakingAmount\": \"string\",\n        \"filledTakingAmount\": \"string\",\n        \"transactions\": [\n          {\n            \"id\": 8211,\n            \"txHash\": \"string\",\n            \"txTime\": 7605,\n            \"makingAmount\": \"string\",\n            \"takingAmount\": \"string\"\n          },\n          {\n            \"id\": 264,\n            \"txHash\": \"string\",\n            \"txTime\": 4011,\n            \"makingAmount\": \"string\",\n            \"takingAmount\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"pagination\": {\n      \"totalItems\": 4925\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25d56baa-b85c-4add-8471-d676100734d6",
+              "name": "Bad Request\n- Missing required fields\n- status is not part of accepted values\n- page, pageSize are in invalid formats\n- page, pageSize are greater than/less than max/min value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "126625ee-8a60-4e26-827b-4b907e176e14",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f28ca85c-5e5f-46c9-b5a3-4a07bbaaad72",
+          "name": "Get Maker Active Making Amount",
+          "request": {
+            "name": "Get Maker Active Making Amount",
+            "description": {
+              "content": "Get the Maker's total making amount for a specified token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-ks",
+                "api",
+                "v1",
+                "orders",
+                "active-making-amount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "(Required) The chainId on which the order is being created. Only supports EVM chains."
+                },
+                {
+                  "disabled": false,
+                  "key": "makerAsset",
+                  "value": "<string>",
+                  "description": "(Required) The token address of the asset which the Maker is selling."
+                },
+                {
+                  "disabled": false,
+                  "key": "maker",
+                  "value": "<string>",
+                  "description": "(Required) The address of the Maker."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e601881-11a7-4018-b96a-d65a5f714bcd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders",
+                    "active-making-amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makerAsset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1050,\n  \"message\": \"string\",\n  \"data\": {\n    \"activeMakingAmount\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "126c8c5b-3f1d-4043-8d72-5598fbbf96a3",
+              "name": "Bad Request\n- Missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders",
+                    "active-making-amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makerAsset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "216a9726-ccf3-4c4b-9e8f-590d3383d259",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "orders",
+                    "active-making-amount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "makerAsset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maker",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d32969e1-e4d2-4801-ae71-5a807d060553",
+          "name": "Create New Order",
+          "request": {
+            "name": "Create New Order",
+            "description": {
+              "content": "API for Makers to create new orders by sending in order params which includes the signed EIP712 message returned in `/write/api/v1/orders/sign-message`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "write",
+                "api",
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"salt\": \"<string>\",\n  \"signature\": \"<string>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de745564-3c1f-4b5d-a60b-22ff9cbe702b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"salt\": \"<string>\",\n  \"signature\": \"<string>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2541,\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": 7086\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7927708-5ad1-4e63-b339-781978e820eb",
+              "name": "Bad Request\n- Missing required fields\n- chainId is not supported\n- makerAsset, takerAsset, maker, receiver, allowedSenders are not ETH address\n- makerAsset, takerAsset are native token\n- makingAmount, takingAmount are less than or equal 0\n- makingAmount, takingAmount, salt are not uint256\n- makerAsset is equal to takerAsset\n- expiredAt is in the past\n- signature is incorrect\n- maker's balance is not enough\n- maker's allowance amount is not enough",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"salt\": \"<string>\",\n  \"signature\": \"<string>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d32b2f2-0223-46e6-ac87-bd566600a562",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"salt\": \"<string>\",\n  \"signature\": \"<string>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99057505-4907-4e08-808e-a4c0f25fdce9",
+          "name": "Submit Gasless Cancel Order(s)",
+          "request": {
+            "name": "Submit Gasless Cancel Order(s)",
+            "description": {
+              "content": "API for Makers to gaslessly cancel orders by sending in order params which includes the signed EIP712 message returned in `/write/api/v1/orders/cancel-sign`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "write",
+                "api",
+                "v1",
+                "orders",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required to include 'https://kyberswap.com' to authenticate the POST call.",
+                "key": "Origin",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2565d36b-f01b-4ccd-814e-aed7c57fdf85",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required to include 'https://kyberswap.com' to authenticate the POST call.",
+                    "key": "Origin",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 745,\n  \"message\": \"string\",\n  \"data\": {\n    \"orders\": [\n      {\n        \"id\": 6415,\n        \"chainId\": \"string\",\n        \"operatorSignatureExpiredAt\": 3019\n      },\n      {\n        \"id\": 7396,\n        \"chainId\": \"string\",\n        \"operatorSignatureExpiredAt\": 1775\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebfab7e9-da1a-40b9-a12c-ebe36e5a9558",
+              "name": "Bad Request\n- Missing required fields\n- chainId is not supported\n- maker is not ETH addresses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required to include 'https://kyberswap.com' to authenticate the POST call.",
+                    "key": "Origin",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5468ab4a-0603-4c31-a83e-b2803c351b1f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required to include 'https://kyberswap.com' to authenticate the POST call.",
+                    "key": "Origin",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8165be35-9289-4def-8e23-b8afad73f6dc",
+          "name": "Get Unsigned Cancel Order(s) Message",
+          "request": {
+            "name": "Get Unsigned Cancel Order(s) Message",
+            "description": {
+              "content": "Get EIP712 cancel order message to be signed (i.e. 'Gasless Cancel'). The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders/cancel`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "write",
+                "api",
+                "v1",
+                "orders",
+                "cancel-sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d730edf1-7ef1-4ce9-a2be-5b2c5d652d01",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7850,\n  \"message\": \"string\",\n  \"data\": {\n    \"types\": {\n      \"EIP712Domain\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"CancelOrder\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    \"domain\": {\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"chainId\": \"string\"\n    },\n    \"primaryType\": \"string\",\n    \"message\": {\n      \"chainId\": \"string\",\n      \"maker\": \"string\",\n      \"orderIds\": [\n        231,\n        2247\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d29baab8-cf26-4f4a-bafc-97591244f7be",
+              "name": "Bad Request\n- Missing required fields\n- chainId is not supported\n- maker is not ETH address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acc9a1ab-bd90-4289-8f5c-8a1e837c3e93",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "cancel-sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"orderIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0bf5436-33d0-4f31-9dc1-77f3b6cbf4d4",
+          "name": "Get Unsigned Create Order Message",
+          "request": {
+            "name": "Get Unsigned Create Order Message",
+            "description": {
+              "content": "Get EIP712 create order message to be signed. The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "write",
+                "api",
+                "v1",
+                "orders",
+                "sign-message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1fe1a0b3-a919-495c-b501-b1ebc12cf377",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "sign-message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9087,\n  \"message\": \"string\",\n  \"data\": {\n    \"types\": {\n      \"EIP712Domain\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"Order\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    \"domain\": {\n      \"name\": \"string\",\n      \"version\": \"string\",\n      \"chainId\": \"string\",\n      \"verifyingContract\": \"string\"\n    },\n    \"primaryType\": \"string\",\n    \"message\": {\n      \"salt\": \"string\",\n      \"makerAsset\": \"string\",\n      \"takerAsset\": \"string\",\n      \"maker\": \"string\",\n      \"receiver\": \"string\",\n      \"allowedSender\": \"string\",\n      \"makingAmount\": \"string\",\n      \"takingAmount\": \"string\",\n      \"feeConfig\": \"string\",\n      \"makerAssetData\": \"string\",\n      \"takerAssetData\": \"string\",\n      \"getMakerAmount\": \"string\",\n      \"getTakerAmount\": \"string\",\n      \"predicate\": \"string\",\n      \"interaction\": \"string\",\n      \"takerTokenFeeAmount\": \"string\",\n      \"permit\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e580033c-9724-4fb3-9894-7f331b01b1f5",
+              "name": "Bad Request\n- Missing required fields\n- chainId is not supported\n- makerAsset, takerAsset, maker, receiver, allowedSenders are not ETH address\n- makerAsset or takerAsset are native tokens\n- makingAmount, takingAmount are less than or equal to 0\n- makingAmount, takingAmount are not uint128\n- expiredAt is in the past",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "sign-message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c994206-e2b9-403a-b1e2-2bb6a234fc4f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "write",
+                    "api",
+                    "v1",
+                    "orders",
+                    "sign-message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chainId\": \"<string>\",\n  \"makerAsset\": \"<string>\",\n  \"takerAsset\": \"<string>\",\n  \"maker\": \"<string>\",\n  \"makingAmount\": \"<string>\",\n  \"takingAmount\": \"<string>\",\n  \"expiredAt\": \"<integer>\",\n  \"receiver\": \"<string>\",\n  \"allowedSenders\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 343,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aggregator-api.kyberswap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f2f1ae8d-1af2-4d1d-811e-05ebc301d3c0",
+    "name": "KyberSwap Aggregator General Maker API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KyberSwap Aggregator General API",
+    "version": "2.12.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Limit Order Contract Addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/configs/contract-address",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId of the network to query."
+              }
+            ]
+          },
+          "docs": "Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks."
+        },
+        {
+          "info": {
+            "name": "Get Chain Supported Pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-partner/api/v1/orders/pairs",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId of the network to query."
+              }
+            ]
+          },
+          "docs": "Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

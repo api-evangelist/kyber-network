@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KyberSwap Aggregator General Maker API",
+    "version": "2.12.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Encoded Data For Batch Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/encode/cancel-batch-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request for the cancellation encoded data from KyberSwap. This data can then be executed on-chain from the signer's wallet."
+        },
+        {
+          "info": {
+            "name": "Generate Encoded Data For Cancel All",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/encode/increase-nonce"
+          },
+          "docs": "Request for the cancel all encoded data from KyberSwap. By increasing the LO contract nonce tied to the Maker, the LO contract is able to nullify all existing orders. This data can then be executed on-chain from the Maker's wallet."
+        },
+        {
+          "info": {
+            "name": "Get List Of Orders By Maker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/orders",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId on which the order is being created. Only supports EVM chains."
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "The address of the Maker."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the order to filter for:\n  - `active`: Order is active (both open and has been partially filled).\n  - `open`: Order is open and has yet to be filled.\n  - `partially_filled`: Order has been partially filled.\n  - `closed`: Order has been closed and can no longer be filled.\n  - `filled`: Order has been filled with no remaining assets to be filled.\n  - `cancelled`: Order was cancelled by the Maker and can no longer be filled.\n  - `expired`: Order can no longer be filled as the expiry set by the Maker is in the past."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Token symbol or token address. Search prefix for symbol, search exact for address."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Number of pages to return. Minimum and default is set at `1`."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to display per page. Minimum is `1` and maximum is `50`. Default is `10`."
+              }
+            ]
+          },
+          "docs": "Get all orders created by a Maker address filtered by the order status."
+        },
+        {
+          "info": {
+            "name": "Get Maker Active Making Amount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/orders/active-making-amount",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId on which the order is being created. Only supports EVM chains."
+              },
+              {
+                "name": "makerAsset",
+                "value": "",
+                "type": "query",
+                "description": "The token address of the asset which the Maker is selling."
+              },
+              {
+                "name": "maker",
+                "value": "",
+                "type": "query",
+                "description": "The address of the Maker."
+              }
+            ]
+          },
+          "docs": "Get the Maker's total making amount for a specified token."
+        },
+        {
+          "info": {
+            "name": "Create New Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/write/api/v1/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for Makers to create new orders by sending in order params which includes the signed EIP712 message returned in `/write/api/v1/orders/sign-message`."
+        },
+        {
+          "info": {
+            "name": "Submit Gasless Cancel Order(s)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/write/api/v1/orders/cancel",
+            "headers": [
+              {
+                "name": "Origin",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for Makers to gaslessly cancel orders by sending in order params which includes the signed EIP712 message returned in `/write/api/v1/orders/cancel-sign`."
+        },
+        {
+          "info": {
+            "name": "Get Unsigned Cancel Order(s) Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/write/api/v1/orders/cancel-sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get EIP712 cancel order message to be signed (i.e. 'Gasless Cancel'). The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders/cancel`."
+        },
+        {
+          "info": {
+            "name": "Get Unsigned Create Order Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/write/api/v1/orders/sign-message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get EIP712 create order message to be signed. The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

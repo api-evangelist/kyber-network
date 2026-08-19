@@ -1,0 +1,1844 @@
+{
+  "item": [
+    {
+      "id": "8b628d21-d220-4909-893b-9749c1f682a5",
+      "name": "Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7eb17b89-87ea-4844-af8d-70e0a85cd34c",
+          "name": "Get the best zap-in route.",
+          "request": {
+            "name": "Get the best zap-in route.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "in",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dex",
+                  "value": "<string>",
+                  "description": "(Required) Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+                },
+                {
+                  "disabled": false,
+                  "key": "pool.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the pool to zap into."
+                },
+                {
+                  "disabled": false,
+                  "key": "position.id",
+                  "value": "<string>",
+                  "description": "id of the position to add liquidity to; omit to create a new uniswapV3 position. for uniswapV2 this is user address"
+                },
+                {
+                  "disabled": false,
+                  "key": "position.tickLower",
+                  "value": "<integer>",
+                  "description": "min tick of the position, required if creating a new uniswapV3 position."
+                },
+                {
+                  "disabled": false,
+                  "key": "position.tickUpper",
+                  "value": "<integer>",
+                  "description": "max tick of the position, required if creating a new uniswapV3 position."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokensIn",
+                  "value": "<string>",
+                  "description": "(Required) which token(s) to use as zap source. also accepts comma separated addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokensIn",
+                  "value": "<string>",
+                  "description": "(Required) which token(s) to use as zap source. also accepts comma separated addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "amountsIn",
+                  "value": "<string>",
+                  "description": "(Required) amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "amountsIn",
+                  "value": "<string>",
+                  "description": "(Required) amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenIn",
+                  "value": "<string>",
+                  "description": "which token(s) to use as zap source. also accepts comma separated addresses.\ndeprecated: use tokens_in. if both fields are specified, they are combined"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenIn",
+                  "value": "<string>",
+                  "description": "which token(s) to use as zap source. also accepts comma separated addresses.\ndeprecated: use tokens_in. if both fields are specified, they are combined"
+                },
+                {
+                  "disabled": false,
+                  "key": "amountIn",
+                  "value": "<string>",
+                  "description": "amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts.\ndeprecated: use amounts_in. if both fields are specified, they are combined"
+                },
+                {
+                  "disabled": false,
+                  "key": "amountIn",
+                  "value": "<string>",
+                  "description": "amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts.\ndeprecated: use amounts_in. if both fields are specified, they are combined"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.disable",
+                  "value": "<boolean>",
+                  "description": "whether to disable swapping with the aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.includedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to use for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedPools",
+                  "value": "<string>",
+                  "description": "comma-separated list of pools to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeAddress",
+                  "value": "<string>",
+                  "description": "the address of the fee recipient."
+                },
+                {
+                  "disabled": false,
+                  "key": "feePcm",
+                  "value": "<long>",
+                  "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+                },
+                {
+                  "disabled": false,
+                  "key": "slippage",
+                  "value": "<long>",
+                  "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Client Id",
+                "key": "X-Client-Id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Request Id",
+                "key": "X-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34527aee-b6b7-4fec-bfb3-c0f9c913302e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "in",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dex",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "position.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7140,\n  \"message\": \"string\",\n  \"data\": {\n    \"poolDetails\": {\n      \"category\": \"string\",\n      \"uniswapV3\": {\n        \"tick\": 2044,\n        \"newTick\": 2229,\n        \"sqrtP\": \"string\",\n        \"newSqrtP\": \"string\"\n      },\n      \"uniswapV2\": {\n        \"reserve0\": \"string\",\n        \"newReserve0\": \"string\",\n        \"reserve1\": \"string\",\n        \"newReserve1\": \"string\"\n      },\n      \"algebraV1\": {\n        \"tick\": 9035,\n        \"newTick\": 6885,\n        \"sqrtP\": \"string\",\n        \"newSqrtP\": \"string\"\n      }\n    },\n    \"positionDetails\": {\n      \"removedLiquidity\": \"0530\",\n      \"removedAmountUsd\": \"string\",\n      \"addedLiquidity\": \"5\",\n      \"addedAmountUsd\": \"string\"\n    },\n    \"zapDetails\": {\n      \"initialAmountUsd\": \"string\",\n      \"actions\": [\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"finalAmountUsd\": \"string\",\n      \"priceImpact\": 4681.505962153176\n    },\n    \"route\": \"Nc1aB8EzCaAMjAzBGY/5Nv2jRjKf7/yalkKh7NfW\",\n    \"routerAddress\": \"string\",\n    \"gas\": \"string\",\n    \"gasUsd\": \"string\"\n  },\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e950b131-163e-47f4-8685-b9f2cb018adc",
+              "name": "Invalid Argument",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "in",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dex",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "position.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5880,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26157f6f-f720-4b06-a1f3-17c914293e8b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "in",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dex",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "position.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d5a1747-d862-47bc-9fe7-cde426e61590",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "in",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dex",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pool.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "position.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "position.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokensIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountsIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff686128-caf7-49fd-96b5-b247fc9ad0b0",
+          "name": "Get the best zap-migrate route.",
+          "request": {
+            "name": "Get the best zap-migrate route.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "migrate",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dexFrom",
+                  "value": "<string>",
+                  "description": "(Required) Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+                },
+                {
+                  "disabled": false,
+                  "key": "dexTo",
+                  "value": "<string>",
+                  "description": "(Required) Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+                },
+                {
+                  "disabled": false,
+                  "key": "poolFrom.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the pool to zap into."
+                },
+                {
+                  "disabled": false,
+                  "key": "poolTo.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the pool to zap into."
+                },
+                {
+                  "disabled": false,
+                  "key": "positionFrom.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the position to withdraw from"
+                },
+                {
+                  "disabled": false,
+                  "key": "positionTo.id",
+                  "value": "<string>",
+                  "description": "id of the position to add liquidity to; omit to create a new uniswapV3 position. for uniswapV2 this is user address"
+                },
+                {
+                  "disabled": false,
+                  "key": "positionTo.tickLower",
+                  "value": "<integer>",
+                  "description": "min tick of the position, required if creating a new uniswapV3 position."
+                },
+                {
+                  "disabled": false,
+                  "key": "positionTo.tickUpper",
+                  "value": "<integer>",
+                  "description": "max tick of the position, required if creating a new uniswapV3 position."
+                },
+                {
+                  "disabled": false,
+                  "key": "liquidityOut",
+                  "value": "<string>",
+                  "description": "liquidity amount to withdraw, or empty or 0 to withdraw all"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.disable",
+                  "value": "<boolean>",
+                  "description": "whether to disable swapping with the aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.includedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to use for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedPools",
+                  "value": "<string>",
+                  "description": "comma-separated list of pools to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeAddress",
+                  "value": "<string>",
+                  "description": "options for getting aggregator routes\nthe address of the fee recipient."
+                },
+                {
+                  "disabled": false,
+                  "key": "feePcm",
+                  "value": "<long>",
+                  "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+                },
+                {
+                  "disabled": false,
+                  "key": "slippage",
+                  "value": "<long>",
+                  "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Client Id",
+                "key": "X-Client-Id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Request Id",
+                "key": "X-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c96af5a-6d00-4ad9-b16f-0ae39b06a4e1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "migrate",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dexTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "positionTo.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2111,\n  \"message\": \"string\",\n  \"data\": {\n    \"poolDetails\": {\n      \"category\": \"string\",\n      \"uniswapV3\": {\n        \"tick\": 8567,\n        \"newTick\": 8520,\n        \"sqrtP\": \"string\",\n        \"newSqrtP\": \"string\"\n      },\n      \"uniswapV2\": {\n        \"reserve0\": \"string\",\n        \"newReserve0\": \"string\",\n        \"reserve1\": \"string\",\n        \"newReserve1\": \"string\"\n      },\n      \"algebraV1\": {\n        \"tick\": 5301,\n        \"newTick\": 8085,\n        \"sqrtP\": \"string\",\n        \"newSqrtP\": \"string\"\n      }\n    },\n    \"positionDetails\": {\n      \"removedLiquidity\": \"372819\",\n      \"removedAmountUsd\": \"string\",\n      \"addedLiquidity\": \"716364366\",\n      \"addedAmountUsd\": \"string\"\n    },\n    \"zapDetails\": {\n      \"initialAmountUsd\": \"string\",\n      \"actions\": [\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"finalAmountUsd\": \"string\",\n      \"priceImpact\": 9155.483559764434\n    },\n    \"route\": \"1lYwHnXJPNMgS0E=\",\n    \"routerAddress\": \"string\",\n    \"gas\": \"string\",\n    \"gasUsd\": \"string\"\n  },\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf187b26-493f-414e-aeb8-66ee785c3830",
+              "name": "Invalid Argument",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "migrate",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dexTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "positionTo.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65bd475b-f1e0-4237-b921-7bf4d647afa6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "migrate",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dexTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "positionTo.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14aaf091-82eb-4688-a468-0f0370807d15",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "migrate",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dexTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionTo.tickLower",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "positionTo.tickUpper",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ebd3931-ba71-4ca8-9ac1-ca288e10bf8e",
+          "name": "Get the best zap-out route.",
+          "request": {
+            "name": "Get the best zap-out route.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "out",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dexFrom",
+                  "value": "<string>",
+                  "description": "(Required) Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+                },
+                {
+                  "disabled": false,
+                  "key": "poolFrom.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the pool to withdraw from."
+                },
+                {
+                  "disabled": false,
+                  "key": "positionFrom.id",
+                  "value": "<string>",
+                  "description": "(Required) id of the position to withdraw from"
+                },
+                {
+                  "disabled": false,
+                  "key": "liquidityOut",
+                  "value": "<string>",
+                  "description": "liquidity amount to withdraw, or empty or 0 to withdraw all"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenOut",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.disable",
+                  "value": "<boolean>",
+                  "description": "whether to disable swapping with the aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.includedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to use for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedSources",
+                  "value": "<string>",
+                  "description": "comma-separated list of sources to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregatorOptions.excludedPools",
+                  "value": "<string>",
+                  "description": "comma-separated list of pools to exclude for aggregator"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeAddress",
+                  "value": "<string>",
+                  "description": "fee recipient"
+                },
+                {
+                  "disabled": false,
+                  "key": "feePcm",
+                  "value": "<long>",
+                  "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+                },
+                {
+                  "disabled": false,
+                  "key": "slippage",
+                  "value": "<long>",
+                  "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Client Id",
+                "key": "X-Client-Id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Request Id",
+                "key": "X-Request-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3480c03e-2cc6-42ed-baae-4c93af008cdd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "out",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3125,\n  \"message\": \"string\",\n  \"data\": {\n    \"zapDetails\": {\n      \"initialAmountUsd\": \"string\",\n      \"actions\": [\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"ACTION_TYPE_UNSPECIFIED\",\n          \"protocolFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"partnerFee\": {\n            \"pcm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregatorSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"poolSwap\": {\n            \"swaps\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"addLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"removeLiquidity\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"refund\": {\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"finalAmountUsd\": \"string\",\n      \"priceImpact\": 7015.158242228702\n    },\n    \"route\": \"+GlAZC37wnGT\",\n    \"routerAddress\": \"string\",\n    \"gas\": \"string\",\n    \"gasUsd\": \"string\"\n  },\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e79950ed-d6fb-4b9b-b320-c9d468af9bd7",
+              "name": "Invalid Argument",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "out",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a270eb70-3375-4a32-b71a-d1e553906b5a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "out",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d100af2-e8df-41a5-87e6-cf2831089b0d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "out",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dexFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poolFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "positionFrom.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "liquidityOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.disable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggregatorOptions.includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregatorOptions.excludedPools",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feePcm",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "slippage",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Client Id",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Request Id",
+                    "key": "X-Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6613,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aggregator-api.kyberswap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dccdb7da-3040-408f-98d5-7fd1b4353028",
+    "name": "KyberSwap Aggregator General Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

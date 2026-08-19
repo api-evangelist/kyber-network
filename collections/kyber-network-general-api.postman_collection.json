@@ -1,0 +1,388 @@
+{
+  "item": [
+    {
+      "id": "2be02e3b-df12-46bf-adf7-162c4f726145",
+      "name": "General",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1edcc91c-939a-4028-bcf0-a1385fe4c1bc",
+          "name": "Get Limit Order Contract Addresses",
+          "request": {
+            "name": "Get Limit Order Contract Addresses",
+            "description": {
+              "content": "Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-ks",
+                "api",
+                "v1",
+                "configs",
+                "contract-address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "(Required) The chainId of the network to query."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "733bdbec-ee38-47e1-bd8b-65f98779fe17",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "configs",
+                    "contract-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 233,\n  \"message\": \"string\",\n  \"data\": {\n    \"latest\": \"string\",\n    \"features\": {\n      \"key_0\": {\n        \"supportDoubleSignature\": true\n      },\n      \"key_1\": {\n        \"supportDoubleSignature\": true\n      },\n      \"key_2\": {\n        \"supportDoubleSignature\": true\n      },\n      \"key_3\": {\n        \"supportDoubleSignature\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50de4b8c-ff9c-43d4-9709-9dcba2f173be",
+              "name": "Bad Request\n- Missing required field\n- chainId is not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "configs",
+                    "contract-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5718,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20b30f81-b448-476a-90a5-b6c8960379ba",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-ks",
+                    "api",
+                    "v1",
+                    "configs",
+                    "contract-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9305,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ab516f0-5c2e-41fb-bc78-d7a8c5f10e08",
+          "name": "Get Chain Supported Pairs",
+          "request": {
+            "name": "Get Chain Supported Pairs",
+            "description": {
+              "content": "Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "read-partner",
+                "api",
+                "v1",
+                "orders",
+                "pairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "chainId",
+                  "value": "<string>",
+                  "description": "(Required) The chainId of the network to query."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e33f660b-dc55-4e5c-ac51-48f5213dfd61",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-partner",
+                    "api",
+                    "v1",
+                    "orders",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"data\": {\n    \"pairs\": [\n      {\n        \"makerAsset\": \"string\",\n        \"takerAsset\": \"string\"\n      },\n      {\n        \"makerAsset\": \"string\",\n        \"takerAsset\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31c17bdd-c867-4bf4-b1c7-9058e8f4aa19",
+              "name": "Bad Request\n- Missing required field\n- chainId is not supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-partner",
+                    "api",
+                    "v1",
+                    "orders",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9305,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32ada471-c78b-45c6-908b-30ddbea2c4fb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "read-partner",
+                    "api",
+                    "v1",
+                    "orders",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "chainId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9305,\n  \"message\": \"string\",\n  \"errorEntities\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aggregator-api.kyberswap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "12e37a0e-dce1-4234-9262-fa192d3130c4",
+    "name": "KyberSwap Aggregator General API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

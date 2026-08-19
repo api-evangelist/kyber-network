@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KyberSwap Aggregator General Taker API",
+    "version": "2.12.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Taker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Encoded Data To Fill Batch Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/encode/fill-batch-orders-to",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request for the encoded fill batch order data from KyberSwap. This data can then be executed on-chain from the signer's wallet."
+        },
+        {
+          "info": {
+            "name": "Generate Encoded Data To Fill Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://aggregator-api.kyberswap.com/read-ks/api/v1/encode/fill-order-to",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request for the encoded fill order data from KyberSwap. This data can then be executed on-chain from the signer's wallet."
+        },
+        {
+          "info": {
+            "name": "Get Orders By Token Pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-partner/api/v1/orders",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId of the network to query."
+              },
+              {
+                "name": "makerAsset",
+                "value": "",
+                "type": "query",
+                "description": "The token address of the asset which the Taker expects in return."
+              },
+              {
+                "name": "takerAsset",
+                "value": "",
+                "type": "query",
+                "description": "The token address of the asset which the Taker is exchanging."
+              }
+            ]
+          },
+          "docs": "Returns orders for the queried token pair sorted by best rates in descending order."
+        },
+        {
+          "info": {
+            "name": "Request Operator Signature For Maker Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/read-partner/api/v1/orders/operator-signature",
+            "params": [
+              {
+                "name": "chainId",
+                "value": "",
+                "type": "query",
+                "description": "The chainId on which the order is being filled. Only supports EVM chains."
+              },
+              {
+                "name": "orderIds",
+                "value": "",
+                "type": "query",
+                "description": "The order IDs to be cancelled gaslessly."
+              }
+            ]
+          },
+          "docs": "Takers will need to request for KyberSwap Operator signature for target Maker orders which they are planning to fill. The returned operator signature will be required when encoding the Taker fill order for both `/read-ks/api/v1/encode/fill-batch-orders-to` and `/read-ks/api/v1/encode/fill-order-to`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

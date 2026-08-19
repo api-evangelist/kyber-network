@@ -1,0 +1,1945 @@
+{
+  "item": [
+    {
+      "id": "b3dc6ef0-34b7-4e84-8f3b-39ca326c6fa9",
+      "name": "swap",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e209874e-e439-443a-b810-a25417860c4c",
+          "name": "[V1] Post Swap Route For Encoded Data",
+          "request": {
+            "name": "[V1] Post Swap Route For Encoded Data",
+            "description": {
+              "content": "Get the swap's calldata to be sent to the KyberSwap router contract. The request body must contain the `routeSummary` as exactly returned by [V1] Get Swap Route along with the additional tx related parameters. Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":chain",
+                "api",
+                "v1",
+                "route",
+                "build"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4eaf34d6-29b5-4fb8-8080-799351cabf83",
+              "name": "Successfully encoded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3620,\n  \"data\": {\n    \"amountIn\": \"string\",\n    \"amountInUsd\": \"string\",\n    \"amountOut\": \"string\",\n    \"amountOutUsd\": \"string\",\n    \"gas\": \"string\",\n    \"gasUsd\": \"string\",\n    \"data\": \"string\",\n    \"routerAddress\": \"string\",\n    \"transactionValue\": \"string\",\n    \"additionalCostUsd\": \"string\",\n    \"additionalCostMessage\": \"string\"\n  },\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e3a68ca-6a2e-4d5d-aa0a-dde9463d6767",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d83ad00-250e-4c96-9bde-602367b7e50c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e78a60c0-90fe-4167-a60a-271f6bd38f2b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "618b4c1d-5eb1-42d9-a8e7-3279c40b69b4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9590f53c-ce38-4ac9-89fd-d22a43563714",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab831077-16af-40ce-becb-09f16efc67fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fe6e795-c80e-4b0a-a67e-710943b9c769",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8da4ba42-0c43-4216-a807-96285dd9d46f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "773b9982-4b13-4e37-9e23-5f92014d6376",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "route",
+                    "build"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"routeSummary\": {\n    \"tokenIn\": \"<string>\",\n    \"amountIn\": \"<string>\",\n    \"amountInUsd\": \"<string>\",\n    \"tokenOut\": \"<string>\",\n    \"amountOut\": \"<string>\",\n    \"amountOutUsd\": \"<string>\",\n    \"gas\": \"<string>\",\n    \"gasPrice\": \"<string>\",\n    \"gasUsd\": \"<string>\",\n    \"route\": [\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        },\n        {\n          \"pool\": \"<string>\",\n          \"tokenIn\": \"<string>\",\n          \"tokenOut\": \"<string>\",\n          \"swapAmount\": \"<string>\",\n          \"amountOut\": \"<string>\",\n          \"exchange\": \"<string>\",\n          \"poolType\": \"<string>\",\n          \"poolExtra\": \"<string>\",\n          \"extra\": \"<string>\"\n        }\n      ]\n    ],\n    \"routeID\": \"<string>\",\n    \"extraFee\": {\n      \"feeAmount\": \"<string>\",\n      \"feeReceiver\": \"<string>\",\n      \"chargeFeeBy\": \"<string>\",\n      \"isInBps\": \"<boolean>\"\n    },\n    \"checksum\": \"<string>\",\n    \"timestamp\": \"<string>\"\n  },\n  \"sender\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"origin\": \"<string>\",\n  \"permit\": \"<string>\",\n  \"deadline\": \"<integer>\",\n  \"slippageTolerance\": \"<number>\",\n  \"ignoreCappedSlippage\": \"<boolean>\",\n  \"enableGasEstimation\": \"<boolean>\",\n  \"source\": \"<string>\",\n  \"referral\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dfe2bce-db01-4e4f-83ec-1b72d6000c9f",
+          "name": "[V1] Get Swap Route",
+          "request": {
+            "name": "[V1] Get Swap Route",
+            "description": {
+              "content": "Find the best route to swap from `tokenIn` to `tokenOut`, supporting all liquidity sources including RFQ. Use this API to get a route preview before confirming the swap. The route returned can then be combined with transaction specific params in the `POST` API payload to get the encoded data for submission to the KyberSwap router contract. Refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":chain",
+                "api",
+                "v1",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tokenIn",
+                  "value": "<string>",
+                  "description": "(Required) Address of the input token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenOut",
+                  "value": "<string>",
+                  "description": "(Required) Address of the output token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "amountIn",
+                  "value": "<string>",
+                  "description": "(Required) Amount of the input token (in wei)"
+                },
+                {
+                  "disabled": false,
+                  "key": "includedSources",
+                  "value": "<string>",
+                  "description": "DEX IDs included in the route, separated by comma"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludedSources",
+                  "value": "<string>",
+                  "description": "DEX IDs excluded from the route, separated by comma"
+                },
+                {
+                  "disabled": false,
+                  "key": "excludeRFQSources",
+                  "value": "<boolean>",
+                  "description": "Exclude RFQ sources"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyScalableSources",
+                  "value": "<boolean>",
+                  "description": "Exclude unscalable sources and only use sources that accept scaling input amounts"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyDirectPools",
+                  "value": "<boolean>",
+                  "description": "Only routes directly from tokenIn to tokenOut (without hop tokens)"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlySinglePath",
+                  "value": "<boolean>",
+                  "description": "Determines whether to only return single-path route"
+                },
+                {
+                  "disabled": false,
+                  "key": "gasInclude",
+                  "value": "<boolean>",
+                  "description": "Determines whether gas costs are accounted for when searching for best route. Defaults to true"
+                },
+                {
+                  "disabled": false,
+                  "key": "gasPrice",
+                  "value": "<string>",
+                  "description": "Custom gas price in wei used when searching for the best swap route. Use result from eth_gasPrice otherwise"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeAmount",
+                  "value": "<string>",
+                  "description": "Fee amount(s) to be collected.\nIf `isInBps` = `true`, `feeAmount` is the percentage of fees to take with base unit = 10000, i.e `feeAmount` = 10 and `isInBps` = `true` then fee = 0.1%;\nIf `isInBps` = `false`, `feeAmount` is the amount of token to take as fee, i.e `feeAmount` = 10 and `isInBps` = 'false' then fee = 10 token weis.\nIt also accepts a comma-separated list of numbers to support multiple fee receivers, for example: feeAmount=10,20\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "chargeFeeBy",
+                  "value": "<string>",
+                  "description": "Indicates that the API client wants to charge fee by input token (`currency_in`) or output token (`currency_out`).\nDefault is empty whereby no fee is charged.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "isInBps",
+                  "value": "<boolean>",
+                  "description": "if true, fee is taken in bps of the amount in/out, instead of absolute wei value\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeReceiver",
+                  "value": "<string>",
+                  "description": "The API client's wallet address(es) to receive fee (if `chargeFeeBy` is not empty). It can accept a comma separated list of addresses to collect multiple fee amounts into multiple addresses"
+                },
+                {
+                  "disabled": false,
+                  "key": "origin",
+                  "value": "<string>",
+                  "description": "The origin address (user wallet) of the swap tx. Include this to get access to exclusive pools and rates"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                "key": "X-Client-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1003b0e1-b5fe-450a-8cf1-e890390df4b3",
+              "name": "Swap Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6743,\n  \"data\": {\n    \"routeSummary\": {\n      \"tokenIn\": \"string\",\n      \"amountIn\": \"string\",\n      \"amountInUsd\": \"string\",\n      \"tokenOut\": \"string\",\n      \"amountOut\": \"string\",\n      \"amountOutUsd\": \"string\",\n      \"gas\": \"string\",\n      \"gasPrice\": \"string\",\n      \"gasUsd\": \"string\",\n      \"l1FeeUsd\": \"string\",\n      \"route\": [\n        [\n          {\n            \"pool\": \"string\",\n            \"tokenIn\": \"string\",\n            \"tokenOut\": \"string\",\n            \"swapAmount\": \"string\",\n            \"amountOut\": \"string\",\n            \"exchange\": \"string\",\n            \"poolType\": \"string\",\n            \"poolExtra\": {},\n            \"extra\": {}\n          },\n          {\n            \"pool\": \"string\",\n            \"tokenIn\": \"string\",\n            \"tokenOut\": \"string\",\n            \"swapAmount\": \"string\",\n            \"amountOut\": \"string\",\n            \"exchange\": \"string\",\n            \"poolType\": \"string\",\n            \"poolExtra\": {},\n            \"extra\": {}\n          }\n        ],\n        [\n          {\n            \"pool\": \"string\",\n            \"tokenIn\": \"string\",\n            \"tokenOut\": \"string\",\n            \"swapAmount\": \"string\",\n            \"amountOut\": \"string\",\n            \"exchange\": \"string\",\n            \"poolType\": \"string\",\n            \"poolExtra\": {},\n            \"extra\": {}\n          },\n          {\n            \"pool\": \"string\",\n            \"tokenIn\": \"string\",\n            \"tokenOut\": \"string\",\n            \"swapAmount\": \"string\",\n            \"amountOut\": \"string\",\n            \"exchange\": \"string\",\n            \"poolType\": \"string\",\n            \"poolExtra\": {},\n            \"extra\": {}\n          }\n        ]\n      ],\n      \"routeID\": \"string\",\n      \"checksum\": \"string\",\n      \"timestamp\": \"string\",\n      \"extraFee\": {\n        \"feeAmount\": \"string\",\n        \"chargeFeeBy\": \"currency_in\",\n        \"isInBps\": false,\n        \"feeReceiver\": \"string\"\n      }\n    },\n    \"routerAddress\": \"string\"\n  },\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33f725f3-7104-4126-b813-bd19a01de122",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "204d7371-3d33-48a2-9822-6db2ecb0afb4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dc7fb3a-c72f-426d-b1db-d1e5a9c9d17d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16caa793-045a-43f0-93d6-3dff475f4b41",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc63134f-5798-4fdd-93ee-97393fb0a738",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "354b28f3-1dcb-4a41-b98f-73615d2baf71",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33303966-8219-4b73-a749-d0f0e669c6e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e0f86e5b-2c20-48f7-b090-9e651d3dbca1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ee458cf-ac13-4ec8-b5ef-2350f022ee73",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "api",
+                    "v1",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludedSources",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "excludeRFQSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyDirectPools",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlySinglePath",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origin",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f2c99ca-0423-458e-a4d6-8c25b7553b33",
+          "name": "Get Swap Info with Encoded Data",
+          "request": {
+            "name": "Get Swap Info with Encoded Data",
+            "description": {
+              "content": "Retrieve the information about a Swap between 2 tokens with encoded data to submit to KyberSwap router contract. RFQ liquidity sources are not supported.\nPlease refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":chain",
+                "route",
+                "encode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tokenIn",
+                  "value": "<string>",
+                  "description": "(Required) Address of the input token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "tokenOut",
+                  "value": "<string>",
+                  "description": "(Required) Address of the output token \n`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE` in case of native token\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "amountIn",
+                  "value": "<string>",
+                  "description": "(Required) Amount of the input token (in wei)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dexes",
+                  "value": "<string>",
+                  "description": "DEX IDs included in the route, separated by comma"
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyScalableSources",
+                  "value": "<boolean>",
+                  "description": "Exclude unscalable sources and only use sources that accept scaling input amounts"
+                },
+                {
+                  "disabled": false,
+                  "key": "gasInclude",
+                  "value": "<boolean>",
+                  "description": "Determines whether gas costs are accounted for when searching for best route"
+                },
+                {
+                  "disabled": false,
+                  "key": "gasPrice",
+                  "value": "<string>",
+                  "description": "Custom gas price in wei used when searching for the best swap route. Use result from eth_gasPrice otherwise"
+                },
+                {
+                  "disabled": false,
+                  "key": "slippageTolerance",
+                  "value": "<number>",
+                  "description": "This is the amount of slippage the user can accept for his trade. The unit is bps (1/100 of 1%).\nThe value is in ranges [0, 2000], with 10 meaning 0.1%, and 0.1 meaning 0.001%.\nIf no value is provided, slippageTolerance will be set to 0.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "chargeFeeBy",
+                  "value": "<string>",
+                  "description": "Indicates that the API client wants to charge fee by input token (`currency_in`) or output token (`currency_out`).\nDefault is empty whereby no fee is charged.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeReceiver",
+                  "value": "<string>",
+                  "description": "The API client's wallet address to receive fee (if `chargeFeeBy` is not empty)"
+                },
+                {
+                  "disabled": false,
+                  "key": "isInBps",
+                  "value": "<boolean>",
+                  "description": "if true, fee is taken in bps of the amount in/out, instead of absolute wei value\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeAmount",
+                  "value": "<string>",
+                  "description": "Fee amount to be collected.\nIf `isInBps` = `true`, `feeAmount` is the percentage of fees to take with base unit = 10000, i.e `feeAmount` = 10 and `isInBps` = `true` then fee = 0.1%;\nIf `isInBps` = `false`, `feeAmount` is the amount of token to take as fee, i.e `feeAmount` = 10 and `isInBps` = 'false' then fee = 10 token weis\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "deadline",
+                  "value": "<string>",
+                  "description": "Deadline (in Unix epoch second) for the transaction to be executed by. Default will be +20 minute. Cannot be in the past."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Address to receive the output token"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientData",
+                  "value": "<string>",
+                  "description": "Json string to include your client id in the source field if header cannot be used"
+                },
+                {
+                  "disabled": false,
+                  "key": "referral",
+                  "value": "<string>",
+                  "description": "Referral info to include in the swap transaction's ClientData event."
+                },
+                {
+                  "disabled": false,
+                  "key": "permit",
+                  "value": "<string>",
+                  "description": "Encoded token's permit calldata to swap without approving.\nThe permit's spender should be the routerAddress returned in the [Get Swap Route](#get-route) API response. See /permit\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "ignoreCappedSlippage",
+                  "value": "<boolean>",
+                  "description": "If true, the slippage tolerance can be any value. Please use with caution."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                "key": "X-Client-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c451370-fb0b-444f-953e-c24c9efa7015",
+              "name": "Swap Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":chain",
+                    "route",
+                    "encode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokenIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tokenOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amountIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dexes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "onlyScalableSources",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasInclude",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "gasPrice",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "slippageTolerance",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "chargeFeeBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isInBps",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "feeAmount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deadline",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientData",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referral",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "permit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ignoreCappedSlippage",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ClientID of the party calling the API. Provide a value to identify your client and avoid getting rate limited. If an even higher rate limit is needed, contact bd.",
+                    "key": "X-Client-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"inputAmount\": \"string\",\n  \"outputAmount\": \"string\",\n  \"totalGas\": 2704,\n  \"gasUsd\": 1743.409998819515,\n  \"amountInUsd\": 9403.539531383392,\n  \"amountOutUsd\": 3321.8469357822387,\n  \"receivedUsd\": 8652.089726261369,\n  \"swaps\": [\n    [\n      {\n        \"pool\": \"string\",\n        \"tokenIn\": \"string\",\n        \"tokenOut\": \"string\",\n        \"swapAmount\": \"string\",\n        \"amountOut\": \"string\",\n        \"exchange\": \"string\",\n        \"poolType\": \"string\",\n        \"poolExtra\": {},\n        \"extra\": {}\n      },\n      {\n        \"pool\": \"string\",\n        \"tokenIn\": \"string\",\n        \"tokenOut\": \"string\",\n        \"swapAmount\": \"string\",\n        \"amountOut\": \"string\",\n        \"exchange\": \"string\",\n        \"poolType\": \"string\",\n        \"poolExtra\": {},\n        \"extra\": {}\n      }\n    ],\n    [\n      {\n        \"pool\": \"string\",\n        \"tokenIn\": \"string\",\n        \"tokenOut\": \"string\",\n        \"swapAmount\": \"string\",\n        \"amountOut\": \"string\",\n        \"exchange\": \"string\",\n        \"poolType\": \"string\",\n        \"poolExtra\": {},\n        \"extra\": {}\n      },\n      {\n        \"pool\": \"string\",\n        \"tokenIn\": \"string\",\n        \"tokenOut\": \"string\",\n        \"swapAmount\": \"string\",\n        \"amountOut\": \"string\",\n        \"exchange\": \"string\",\n        \"poolType\": \"string\",\n        \"poolExtra\": {},\n        \"extra\": {}\n      }\n    ]\n  ],\n  \"encodedSwapData\": \"string\",\n  \"routerAddress\": \"string\",\n  \"gasPriceGwei\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://aggregator-api.kyberswap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fb25b16e-5b15-454b-af92-d1360ec913cd",
+    "name": "KyberSwap Aggregator General swap API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

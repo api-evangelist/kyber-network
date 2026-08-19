@@ -2,11 +2,9 @@ generated: '2026-07-19'
 method: searched
 status: published
 source: https://docs.kyberswap.com/ai-agent-hub/mcp-server-for-hosted-agents
-notes: >-
-  KyberSwap publishes a first-party MCP server as part of its AI Agent Hub. The
-  server never holds private keys — signing tools return unsigned transaction
-  data for the user's own wallet to sign. No API keys are required because the
-  underlying KyberSwap APIs are public.
+notes: KyberSwap publishes a first-party MCP server as part of its AI Agent Hub. The server never holds
+  private keys — signing tools return unsigned transaction data for the user's own wallet to sign. No
+  API keys are required because the underlying KyberSwap APIs are public.
 server:
   name: kyberswap
   transport: stdio
@@ -28,8 +26,7 @@ backing_apis:
 - https://earn-service.kyberswap.com
 tools:
 - name: get-quote
-  description: Get the best swap route from the KyberSwap Aggregator, with rates, gas
-    estimates and warnings.
+  description: Get the best swap route from the KyberSwap Aggregator, with rates, gas estimates and warnings.
   api: aggregator
 - name: token-info
   description: Retrieve token metadata, live USD price, and security assessment.
@@ -71,3 +68,9 @@ safety:
   custody: none
   private_keys: never held by the server
   signing: unsigned payloads returned to the caller's wallet
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census

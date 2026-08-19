@@ -1,0 +1,350 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KyberSwap Aggregator General Service API",
+    "version": "2.12.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the best zap-in route.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/api/v1/in/route",
+            "headers": [
+              {
+                "name": "X-Client-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dex",
+                "value": "",
+                "type": "query",
+                "description": "Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+              },
+              {
+                "name": "pool.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the pool to zap into."
+              },
+              {
+                "name": "position.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the position to add liquidity to; omit to create a new uniswapV3 position. for uniswapV2 this is user address"
+              },
+              {
+                "name": "position.tickLower",
+                "value": "",
+                "type": "query",
+                "description": "min tick of the position, required if creating a new uniswapV3 position."
+              },
+              {
+                "name": "position.tickUpper",
+                "value": "",
+                "type": "query",
+                "description": "max tick of the position, required if creating a new uniswapV3 position."
+              },
+              {
+                "name": "tokensIn",
+                "value": "",
+                "type": "query",
+                "description": "which token(s) to use as zap source. also accepts comma separated addresses"
+              },
+              {
+                "name": "amountsIn",
+                "value": "",
+                "type": "query",
+                "description": "amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts."
+              },
+              {
+                "name": "tokenIn",
+                "value": "",
+                "type": "query",
+                "description": "which token(s) to use as zap source. also accepts comma separated addresses.\ndeprecated: use tokens_in. if both fields are specified, they are combined"
+              },
+              {
+                "name": "amountIn",
+                "value": "",
+                "type": "query",
+                "description": "amount(s) to zap including fee, corresponding to tokenIn. also accepts comma separated amounts.\ndeprecated: use amounts_in. if both fields are specified, they are combined"
+              },
+              {
+                "name": "aggregatorOptions.disable",
+                "value": "",
+                "type": "query",
+                "description": "whether to disable swapping with the aggregator"
+              },
+              {
+                "name": "aggregatorOptions.includedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to use for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to exclude for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedPools",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of pools to exclude for aggregator"
+              },
+              {
+                "name": "feeAddress",
+                "value": "",
+                "type": "query",
+                "description": "the address of the fee recipient."
+              },
+              {
+                "name": "feePcm",
+                "value": "",
+                "type": "query",
+                "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+              },
+              {
+                "name": "slippage",
+                "value": "",
+                "type": "query",
+                "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+              }
+            ]
+          },
+          "docs": "Get the best zap-in route."
+        },
+        {
+          "info": {
+            "name": "Get the best zap-migrate route.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/api/v1/migrate/route",
+            "headers": [
+              {
+                "name": "X-Client-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dexFrom",
+                "value": "",
+                "type": "query",
+                "description": "Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+              },
+              {
+                "name": "dexTo",
+                "value": "",
+                "type": "query",
+                "description": "Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+              },
+              {
+                "name": "poolFrom.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the pool to zap into."
+              },
+              {
+                "name": "poolTo.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the pool to zap into."
+              },
+              {
+                "name": "positionFrom.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the position to withdraw from"
+              },
+              {
+                "name": "positionTo.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the position to add liquidity to; omit to create a new uniswapV3 position. for uniswapV2 this is user address"
+              },
+              {
+                "name": "positionTo.tickLower",
+                "value": "",
+                "type": "query",
+                "description": "min tick of the position, required if creating a new uniswapV3 position."
+              },
+              {
+                "name": "positionTo.tickUpper",
+                "value": "",
+                "type": "query",
+                "description": "max tick of the position, required if creating a new uniswapV3 position."
+              },
+              {
+                "name": "liquidityOut",
+                "value": "",
+                "type": "query",
+                "description": "liquidity amount to withdraw, or empty or 0 to withdraw all"
+              },
+              {
+                "name": "aggregatorOptions.disable",
+                "value": "",
+                "type": "query",
+                "description": "whether to disable swapping with the aggregator"
+              },
+              {
+                "name": "aggregatorOptions.includedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to use for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to exclude for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedPools",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of pools to exclude for aggregator"
+              },
+              {
+                "name": "feeAddress",
+                "value": "",
+                "type": "query",
+                "description": "options for getting aggregator routes\nthe address of the fee recipient."
+              },
+              {
+                "name": "feePcm",
+                "value": "",
+                "type": "query",
+                "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+              },
+              {
+                "name": "slippage",
+                "value": "",
+                "type": "query",
+                "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+              }
+            ]
+          },
+          "docs": "Get the best zap-migrate route."
+        },
+        {
+          "info": {
+            "name": "Get the best zap-out route.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://aggregator-api.kyberswap.com/api/v1/out/route",
+            "headers": [
+              {
+                "name": "X-Client-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dexFrom",
+                "value": "",
+                "type": "query",
+                "description": "Refer to https://docs.kyberswap.com/kyberswap-solutions/kyberswap-zap-as-a-service/zaps-supported-chains-dexes for list of supported dexes for each chain"
+              },
+              {
+                "name": "poolFrom.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the pool to withdraw from."
+              },
+              {
+                "name": "positionFrom.id",
+                "value": "",
+                "type": "query",
+                "description": "id of the position to withdraw from"
+              },
+              {
+                "name": "liquidityOut",
+                "value": "",
+                "type": "query",
+                "description": "liquidity amount to withdraw, or empty or 0 to withdraw all"
+              },
+              {
+                "name": "tokenOut",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aggregatorOptions.disable",
+                "value": "",
+                "type": "query",
+                "description": "whether to disable swapping with the aggregator"
+              },
+              {
+                "name": "aggregatorOptions.includedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to use for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedSources",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of sources to exclude for aggregator"
+              },
+              {
+                "name": "aggregatorOptions.excludedPools",
+                "value": "",
+                "type": "query",
+                "description": "comma-separated list of pools to exclude for aggregator"
+              },
+              {
+                "name": "feeAddress",
+                "value": "",
+                "type": "query",
+                "description": "fee recipient"
+              },
+              {
+                "name": "feePcm",
+                "value": "",
+                "type": "query",
+                "description": "fee percentage in per cent mille (0.001% or 1 in 100,000). Ignored if feeAddress is empty.\nFrom 0 to 100,000 inclusively. Example: 1 for 0.001%."
+              },
+              {
+                "name": "slippage",
+                "value": "",
+                "type": "query",
+                "description": "maximum slippage tolerance in basis points (0.01%), used for aggregator (exceeding which the transaction will\nrevert) and pool swap during zap (for additional zapping and for refund).\nFrom 0 to 10,000 inclusively. Example: 1 for 0.01%."
+              }
+            ]
+          },
+          "docs": "Get the best zap-out route."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
