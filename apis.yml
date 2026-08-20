@@ -51,7 +51,8 @@ apis:
   description: The General API from Kyber Network — 2 operation(s) for general.
   humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
   baseURL: https://aggregator-api.kyberswap.com
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -136,6 +137,8 @@ apis:
   humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
   baseURL: https://aggregator-api.kyberswap.com
   tags:
+  - Swap
+  tags_raw:
   - swap
   properties:
   - type: OpenAPI
