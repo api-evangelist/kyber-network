@@ -11,6 +11,18 @@ description: >-
   API catalog, an llms.txt documentation index, a first-party MCP server and a published
   Agent Skills plugin, making it one of the more agent-ready providers in the DeFi category.
   Governance runs through KyberDAO and the KNC token.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
