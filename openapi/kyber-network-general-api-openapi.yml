@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: KyberSwap Aggregator General API
-  version: 2.12.1
+  title: KyberSwap Limit Order General API
+  version: 1.2.0
 servers:
-- url: https://aggregator-api.kyberswap.com
+- url: https://limit-order.kyberswap.com
 tags:
 - name: General
 paths:
