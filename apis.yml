@@ -149,7 +149,7 @@ apis:
   humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
   baseURL: https://aggregator-api.kyberswap.com
   tags:
-  - Swap
+  - swap
   tags_raw:
   - swap
   properties:
