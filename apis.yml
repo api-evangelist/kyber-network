@@ -121,6 +121,8 @@ apis:
   humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
   baseURL: https://aggregator-api.kyberswap.com
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
