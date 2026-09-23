@@ -34,7 +34,8 @@
     "kyber-network-limit-order-openapi.yml: declared missing tag: Maker",
     "kyber-network-limit-order-openapi.yml: declared missing tag: Taker",
     "kyber-network-zaas-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "kyber-network-zaas-openapi.yml: declared missing tag: Service"
+    "kyber-network-zaas-openapi.yml: declared missing tag: Service",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "kyber-network-general-api-openapi.yml: previously refined output, superseded by openapi/_original/",

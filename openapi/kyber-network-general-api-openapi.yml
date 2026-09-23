@@ -13,7 +13,7 @@ paths:
       tags:
       - General
       operationId: get-read-ks-api-v1-configs-contract-address
-      description: Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.
+      description: Please refer to Supported Exchanges And Networks for full list of supported networks.
       parameters:
       - schema:
           type: string
@@ -81,7 +81,7 @@ paths:
       tags:
       - General
       operationId: get-read-partner-api-v1-orders-pairs
-      description: Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for full list of supported networks.
+      description: Please refer to Supported Exchanges And Networks for full list of supported networks.
       parameters:
       - schema:
           type: string

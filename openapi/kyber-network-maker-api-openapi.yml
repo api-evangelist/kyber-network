@@ -633,7 +633,7 @@ paths:
       tags:
       - Maker
       operationId: post-write-api-v1-orders-cancel-sign
-      description: Get EIP712 cancel order message to be signed (i.e. 'Gasless Cancel'). The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders/cancel`.
+      description: Get EIP712 cancel order message to be signed (i.e. 'Gasless Cancel'). The response of this API will need to be signed with Sign Typed Data v4 before submitting create order request to KyberSwap via `/write/api/v1/orders/cancel`.
       requestBody:
         content:
           application/json:
@@ -756,7 +756,7 @@ paths:
       tags:
       - Maker
       operationId: post-write-api-v1-orders-sign-message
-      description: Get EIP712 create order message to be signed. The response of this API will need to be signed with [Sign Typed Data v4](https://docs.metamask.io/guide/signing-data.html#sign-typed-data-v4) before submitting create order request to KyberSwap via `/write/api/v1/orders`.
+      description: Get EIP712 create order message to be signed. The response of this API will need to be signed with Sign Typed Data v4 before submitting create order request to KyberSwap via `/write/api/v1/orders`.
       requestBody:
         content:
           application/json:
@@ -964,17 +964,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    OrderSignMessageDefinition:
-      title: OrderSignMessageDefinition
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-      - type
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -993,3 +982,14 @@ components:
       - code
       - message
       - errorEntities
+    OrderSignMessageDefinition:
+      title: OrderSignMessageDefinition
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type

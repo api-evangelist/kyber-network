@@ -5,15 +5,15 @@ info:
 servers:
 - url: https://aggregator-api.kyberswap.com
 tags:
-- name: swap
+- name: Swap
 paths:
   /{chain}/api/v1/route/build:
     post:
       summary: '[V1] Post Swap Route For Encoded Data'
-      description: Get the swap's calldata to be sent to the KyberSwap router contract. The request body must contain the `routeSummary` as exactly returned by [V1] Get Swap Route along with the additional tx related parameters. Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.
+      description: Get the swap's calldata to be sent to the KyberSwap router contract. The request body must contain the `routeSummary` as exactly returned by [V1] Get Swap Route along with the additional tx related parameters. Please refer to Supported Exchanges And Networks for the full list of supported networks.
       operationId: post-route-encoded
       tags:
-      - swap
+      - Swap
       requestBody:
         required: true
         content:
@@ -48,10 +48,10 @@ paths:
   /{chain}/api/v1/routes:
     get:
       summary: '[V1] Get Swap Route'
-      description: Find the best route to swap from `tokenIn` to `tokenOut`, supporting all liquidity sources including RFQ. Use this API to get a route preview before confirming the swap. The route returned can then be combined with transaction specific params in the `POST` API payload to get the encoded data for submission to the KyberSwap router contract. Refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.
+      description: Find the best route to swap from `tokenIn` to `tokenOut`, supporting all liquidity sources including RFQ. Use this API to get a route preview before confirming the swap. The route returned can then be combined with transaction specific params in the `POST` API payload to get the encoded data for submission to the KyberSwap router contract. Refer to Supported Exchanges And Networks for the full list of supported networks.
       operationId: get-route
       tags:
-      - swap
+      - Swap
       responses:
         '200':
           description: Swap Found
@@ -190,10 +190,10 @@ paths:
       summary: Get Swap Info with Encoded Data
       description: 'Retrieve the information about a Swap between 2 tokens with encoded data to submit to KyberSwap router contract. RFQ liquidity sources are not supported.
 
-        Please refer to [Supported Exchanges And Networks](https://docs.kyberswap.com/getting-started/supported-exchanges-and-networks) for the full list of supported networks.'
+        Please refer to Supported Exchanges And Networks for the full list of supported networks.'
       operationId: get-route-encode
       tags:
-      - swap
+      - Swap
       responses:
         '200':
           description: Swap Found
@@ -330,114 +330,6 @@ paths:
         description: If true, the slippage tolerance can be any value. Please use with caution.
 components:
   schemas:
-    SwapSequence:
-      type: object
-      required:
-      - pool
-      - tokenIn
-      - tokenOut
-      - swapAmount
-      - amountOut
-      - exchange
-      - poolType
-      - poolExtra
-      - extra
-      properties:
-        pool:
-          type: string
-          description: The address of the pool used in our executor
-        tokenIn:
-          type: string
-          description: The input token for this pool
-        tokenOut:
-          type: string
-          description: The output token for this pool
-        swapAmount:
-          type: string
-          description: The input amount swap through this pool
-        amountOut:
-          type: string
-          description: The output amount after swap through this pool
-        exchange:
-          type: string
-          description: The original exchange of this pool
-        poolType:
-          type: string
-          description: 'The type of this pool (internal definition by our aggregator)
-
-            '
-        poolExtra:
-          type: object
-          description: 'The pool''s extra metadata
-
-            '
-        extra:
-          type: object
-          description: 'The swap''s extra data
-
-            '
-    BuildRouteSuccess:
-      type: object
-      required:
-      - code
-      - data
-      properties:
-        code:
-          type: integer
-          description: Response code
-        message:
-          type: string
-          description: Response message
-        data:
-          type: object
-          description: Response data for encoded swap
-          required:
-          - amountIn
-          - amountInUsd
-          - amountOut
-          - amountOutUsd
-          - gas
-          - gasUsd
-          - data
-          - routerAddress
-          - transactionValue
-          properties:
-            amountIn:
-              type: string
-              description: The amount of input token for the swap in wei
-            amountInUsd:
-              type: string
-              description: Estimated input value, in USD
-            amountOut:
-              type: string
-              description: The amount of output token for the swap in wei
-            amountOutUsd:
-              type: string
-              description: Estimated output value, in USD
-            gas:
-              type: string
-              description: Estimated gas required for swap
-            gasUsd:
-              type: string
-              description: Estimated USD price of gas required for swap
-            additionalCostUsd:
-              type: string
-              description: Estimated additional USD cost of required for swap, for example L1 gas cost
-            additionalCostMessage:
-              type: string
-              description: Description of the additional cost
-            data:
-              type: string
-              description: The encoded data to be sent to KyberSwap router address
-            routerAddress:
-              type: string
-              description: The KyberSwap router address
-            transactionValue:
-              type: string
-              description: Transaction value to sendto router for swaps from native tokens
-        requestId:
-          type: string
-          description: Request id for debug support purposes
     GetRouteSuccess:
       type: object
       required:
@@ -586,6 +478,68 @@ components:
             routerAddress:
               type: string
               description: The KyberSwap router address
+        requestId:
+          type: string
+          description: Request id for debug support purposes
+    BuildRouteSuccess:
+      type: object
+      required:
+      - code
+      - data
+      properties:
+        code:
+          type: integer
+          description: Response code
+        message:
+          type: string
+          description: Response message
+        data:
+          type: object
+          description: Response data for encoded swap
+          required:
+          - amountIn
+          - amountInUsd
+          - amountOut
+          - amountOutUsd
+          - gas
+          - gasUsd
+          - data
+          - routerAddress
+          - transactionValue
+          properties:
+            amountIn:
+              type: string
+              description: The amount of input token for the swap in wei
+            amountInUsd:
+              type: string
+              description: Estimated input value, in USD
+            amountOut:
+              type: string
+              description: The amount of output token for the swap in wei
+            amountOutUsd:
+              type: string
+              description: Estimated output value, in USD
+            gas:
+              type: string
+              description: Estimated gas required for swap
+            gasUsd:
+              type: string
+              description: Estimated USD price of gas required for swap
+            additionalCostUsd:
+              type: string
+              description: Estimated additional USD cost of required for swap, for example L1 gas cost
+            additionalCostMessage:
+              type: string
+              description: Description of the additional cost
+            data:
+              type: string
+              description: The encoded data to be sent to KyberSwap router address
+            routerAddress:
+              type: string
+              description: The KyberSwap router address
+            transactionValue:
+              type: string
+              description: Transaction value to sendto router for swaps from native tokens
         requestId:
           type: string
           description: Request id for debug support purposes
@@ -759,6 +713,52 @@ components:
         referral:
           type: string
           description: Referral info to include in the swap transaction's ClientData event.
+    SwapSequence:
+      type: object
+      required:
+      - pool
+      - tokenIn
+      - tokenOut
+      - swapAmount
+      - amountOut
+      - exchange
+      - poolType
+      - poolExtra
+      - extra
+      properties:
+        pool:
+          type: string
+          description: The address of the pool used in our executor
+        tokenIn:
+          type: string
+          description: The input token for this pool
+        tokenOut:
+          type: string
+          description: The output token for this pool
+        swapAmount:
+          type: string
+          description: The input amount swap through this pool
+        amountOut:
+          type: string
+          description: The output amount after swap through this pool
+        exchange:
+          type: string
+          description: The original exchange of this pool
+        poolType:
+          type: string
+          description: 'The type of this pool (internal definition by our aggregator)
+
+            '
+        poolExtra:
+          type: object
+          description: 'The pool''s extra metadata
+
+            '
+        extra:
+          type: object
+          description: 'The swap''s extra data
+
+            '
     Swap:
       type: object
       required:
