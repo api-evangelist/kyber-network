@@ -146,7 +146,7 @@ apis:
     url: >-
       https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api/api-reference/zaas-http-api
 - aid: kyber-network:kyber-network-swap-api
-  name: Kyber Network swap API
+  name: Kyber Network Swap API
   description: The swap API from Kyber Network — 3 operation(s) for swap.
   humanURL: https://docs.kyberswap.com/developer-guide/aggregator-api
   baseURL: https://aggregator-api.kyberswap.com

@@ -964,6 +964,17 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    OrderSignMessageDefinition:
+      title: OrderSignMessageDefinition
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -982,14 +993,3 @@ components:
       - code
       - message
       - errorEntities
-    OrderSignMessageDefinition:
-      title: OrderSignMessageDefinition
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-      - type
