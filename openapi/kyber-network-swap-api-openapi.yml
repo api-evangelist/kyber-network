@@ -330,176 +330,6 @@ paths:
         description: If true, the slippage tolerance can be any value. Please use with caution.
 components:
   schemas:
-    BuildRoutePostBody:
-      type: object
-      required:
-      - routeSummary
-      - sender
-      - recipient
-      properties:
-        routeSummary:
-          type: object
-          description: The summarised routing data as per returned from [V1] Get Swap Route
-          required:
-          - tokenIn
-          - amountIn
-          - amountInUsd
-          - tokenOut
-          - amountOut
-          - amountOutUsd
-          - gas
-          - gasPrice
-          - gasUsd
-          - route
-          - routeID
-          properties:
-            tokenIn:
-              type: string
-              description: The input token for the swap
-            amountIn:
-              type: string
-              description: The amount of input token for the swap in wei
-            amountInUsd:
-              type: string
-              description: Estimate of input value, in USD
-            tokenOut:
-              type: string
-              description: The output token for the swap
-            amountOut:
-              type: string
-              description: The amount of output token for the swap in wei
-            amountOutUsd:
-              type: string
-              description: Estimate of output value, in USD
-            gas:
-              type: string
-              description: Estimated gas required for swap
-            gasPrice:
-              type: string
-              description: Estimated price of gas required for swap, in wei units
-            gasUsd:
-              type: string
-              description: Estimated USD price of gas required for swap
-            extraFee:
-              type: object
-              description: Fee configuration for the swap
-              required:
-              - feeAmount
-              - feeReceiver
-              properties:
-                feeAmount:
-                  type: string
-                  description: Fee amount(s) to be collected, comma-separated
-                chargeFeeBy:
-                  type: string
-                  enum:
-                  - currency_in
-                  - currency_out
-                  description: 'Indicates whether fee is charged by input token `currency_in` or output token `currency_out`.
-
-                    Default is empty whereby no fee is charged
-
-                    '
-                isInBps:
-                  type: boolean
-                  description: If true, fee is taken in BPS
-                feeReceiver:
-                  type: string
-                  description: Address(es) to which the fees will be sent, comma-separated
-            route:
-              type: array
-              description: Array of swap routes
-              items:
-                type: array
-                items:
-                  type: object
-                  required:
-                  - pool
-                  - tokenIn
-                  - tokenOut
-                  - swapAmount
-                  - amountOut
-                  - exchange
-                  - poolType
-                  - poolExtra
-                  - extra
-                  properties:
-                    pool:
-                      type: string
-                      description: Address of the pool which the swap has been routed to
-                    tokenIn:
-                      type: string
-                      description: The input token address for this pool
-                    tokenOut:
-                      type: string
-                      description: The output token address for this pool
-                    swapAmount:
-                      type: string
-                      description: The amount of input token to be swapped through this pool, in wei
-                    amountOut:
-                      type: string
-                      description: The amount of output token received through swapping through this pool, in wei
-                    exchange:
-                      type: string
-                      description: The exchange where the pool originated from
-                    poolType:
-                      type: string
-                      description: The pool type as defined by our internal aggregator
-                    poolExtra:
-                      type: string
-                      description: Additional pool metadata
-                    extra:
-                      type: string
-                      description: Additional swap metadata
-            routeID:
-              type: string
-              description: Unique ID of this route
-            checksum:
-              type: string
-              description: Checksum of this route
-            timestamp:
-              type: string
-              description: Timestamp of this route
-        sender:
-          type: string
-          description: Address from which the swap input tokens will be transferred from
-        origin:
-          type: string
-          description: Origin address (user wallet) of the swap tx. Include this to avoid getting rate limited by liquidity sources if you use a fixed sender.
-        recipient:
-          type: string
-          description: Address to which the swap output tokens will be sent to
-        permit:
-          type: string
-          description: 'Encoded token''s permit calldata to swap without approving.
-
-            The permit''s spender should be the routerAddress returned in the [Get Swap Route](#get-route) API response. See /permit
-
-            '
-        deadline:
-          type: integer
-          description: Deadline (in Unix time second) for the transaction to be executed. Default will be +20 minute. Cannot be in the past.
-        slippageTolerance:
-          type: number
-          description: 'This is the amount of slippage the user can accept for his trade. The unit is bps (1/100 of 1%).
-
-            The value is in ranges [0, 2000], with 10 meaning 0.1%, and 0.1 meaning 0.001%.
-
-            If no value is provided, slippageTolerance will be set to 0.
-
-            '
-        ignoreCappedSlippage:
-          type: boolean
-          description: If true, the slippage tolerance can be any value. Please use with caution.
-        enableGasEstimation:
-          type: boolean
-          description: If true, call eth_gasEstimate to get rpc-based gas estimation for the transaction. Also helps to detect any potential reverts.
-        source:
-          type: string
-          description: The source of the swap to be recorded on-chain. You may use a different value from the `x-client-id` in the header or even have multiple values to track separate sources.
-        referral:
-          type: string
-          description: Referral info to include in the swap transaction's ClientData event.
     Swap:
       type: object
       required:
@@ -551,68 +381,6 @@ components:
         routerAddress:
           type: string
           description: The KyberSwap router address
-    BuildRouteSuccess:
-      type: object
-      required:
-      - code
-      - data
-      properties:
-        code:
-          type: integer
-          description: Response code
-        message:
-          type: string
-          description: Response message
-        data:
-          type: object
-          description: Response data for encoded swap
-          required:
-          - amountIn
-          - amountInUsd
-          - amountOut
-          - amountOutUsd
-          - gas
-          - gasUsd
-          - data
-          - routerAddress
-          - transactionValue
-          properties:
-            amountIn:
-              type: string
-              description: The amount of input token for the swap in wei
-            amountInUsd:
-              type: string
-              description: Estimated input value, in USD
-            amountOut:
-              type: string
-              description: The amount of output token for the swap in wei
-            amountOutUsd:
-              type: string
-              description: Estimated output value, in USD
-            gas:
-              type: string
-              description: Estimated gas required for swap
-            gasUsd:
-              type: string
-              description: Estimated USD price of gas required for swap
-            additionalCostUsd:
-              type: string
-              description: Estimated additional USD cost of required for swap, for example L1 gas cost
-            additionalCostMessage:
-              type: string
-              description: Description of the additional cost
-            data:
-              type: string
-              description: The encoded data to be sent to KyberSwap router address
-            routerAddress:
-              type: string
-              description: The KyberSwap router address
-            transactionValue:
-              type: string
-              description: Transaction value to sendto router for swaps from native tokens
-        requestId:
-          type: string
-          description: Request id for debug support purposes
     GetRouteSuccess:
       type: object
       required:
@@ -810,3 +578,235 @@ components:
           description: 'The swap''s extra data
 
             '
+    BuildRouteSuccess:
+      type: object
+      required:
+      - code
+      - data
+      properties:
+        code:
+          type: integer
+          description: Response code
+        message:
+          type: string
+          description: Response message
+        data:
+          type: object
+          description: Response data for encoded swap
+          required:
+          - amountIn
+          - amountInUsd
+          - amountOut
+          - amountOutUsd
+          - gas
+          - gasUsd
+          - data
+          - routerAddress
+          - transactionValue
+          properties:
+            amountIn:
+              type: string
+              description: The amount of input token for the swap in wei
+            amountInUsd:
+              type: string
+              description: Estimated input value, in USD
+            amountOut:
+              type: string
+              description: The amount of output token for the swap in wei
+            amountOutUsd:
+              type: string
+              description: Estimated output value, in USD
+            gas:
+              type: string
+              description: Estimated gas required for swap
+            gasUsd:
+              type: string
+              description: Estimated USD price of gas required for swap
+            additionalCostUsd:
+              type: string
+              description: Estimated additional USD cost of required for swap, for example L1 gas cost
+            additionalCostMessage:
+              type: string
+              description: Description of the additional cost
+            data:
+              type: string
+              description: The encoded data to be sent to KyberSwap router address
+            routerAddress:
+              type: string
+              description: The KyberSwap router address
+            transactionValue:
+              type: string
+              description: Transaction value to sendto router for swaps from native tokens
+        requestId:
+          type: string
+          description: Request id for debug support purposes
+    BuildRoutePostBody:
+      type: object
+      required:
+      - routeSummary
+      - sender
+      - recipient
+      properties:
+        routeSummary:
+          type: object
+          description: The summarised routing data as per returned from [V1] Get Swap Route
+          required:
+          - tokenIn
+          - amountIn
+          - amountInUsd
+          - tokenOut
+          - amountOut
+          - amountOutUsd
+          - gas
+          - gasPrice
+          - gasUsd
+          - route
+          - routeID
+          properties:
+            tokenIn:
+              type: string
+              description: The input token for the swap
+            amountIn:
+              type: string
+              description: The amount of input token for the swap in wei
+            amountInUsd:
+              type: string
+              description: Estimate of input value, in USD
+            tokenOut:
+              type: string
+              description: The output token for the swap
+            amountOut:
+              type: string
+              description: The amount of output token for the swap in wei
+            amountOutUsd:
+              type: string
+              description: Estimate of output value, in USD
+            gas:
+              type: string
+              description: Estimated gas required for swap
+            gasPrice:
+              type: string
+              description: Estimated price of gas required for swap, in wei units
+            gasUsd:
+              type: string
+              description: Estimated USD price of gas required for swap
+            extraFee:
+              type: object
+              description: Fee configuration for the swap
+              required:
+              - feeAmount
+              - feeReceiver
+              properties:
+                feeAmount:
+                  type: string
+                  description: Fee amount(s) to be collected, comma-separated
+                chargeFeeBy:
+                  type: string
+                  enum:
+                  - currency_in
+                  - currency_out
+                  description: 'Indicates whether fee is charged by input token `currency_in` or output token `currency_out`.
+
+                    Default is empty whereby no fee is charged
+
+                    '
+                isInBps:
+                  type: boolean
+                  description: If true, fee is taken in BPS
+                feeReceiver:
+                  type: string
+                  description: Address(es) to which the fees will be sent, comma-separated
+            route:
+              type: array
+              description: Array of swap routes
+              items:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - pool
+                  - tokenIn
+                  - tokenOut
+                  - swapAmount
+                  - amountOut
+                  - exchange
+                  - poolType
+                  - poolExtra
+                  - extra
+                  properties:
+                    pool:
+                      type: string
+                      description: Address of the pool which the swap has been routed to
+                    tokenIn:
+                      type: string
+                      description: The input token address for this pool
+                    tokenOut:
+                      type: string
+                      description: The output token address for this pool
+                    swapAmount:
+                      type: string
+                      description: The amount of input token to be swapped through this pool, in wei
+                    amountOut:
+                      type: string
+                      description: The amount of output token received through swapping through this pool, in wei
+                    exchange:
+                      type: string
+                      description: The exchange where the pool originated from
+                    poolType:
+                      type: string
+                      description: The pool type as defined by our internal aggregator
+                    poolExtra:
+                      type: string
+                      description: Additional pool metadata
+                    extra:
+                      type: string
+                      description: Additional swap metadata
+            routeID:
+              type: string
+              description: Unique ID of this route
+            checksum:
+              type: string
+              description: Checksum of this route
+            timestamp:
+              type: string
+              description: Timestamp of this route
+        sender:
+          type: string
+          description: Address from which the swap input tokens will be transferred from
+        origin:
+          type: string
+          description: Origin address (user wallet) of the swap tx. Include this to avoid getting rate limited by liquidity sources if you use a fixed sender.
+        recipient:
+          type: string
+          description: Address to which the swap output tokens will be sent to
+        permit:
+          type: string
+          description: 'Encoded token''s permit calldata to swap without approving.
+
+            The permit''s spender should be the routerAddress returned in the [Get Swap Route](#get-route) API response. See /permit
+
+            '
+        deadline:
+          type: integer
+          description: Deadline (in Unix time second) for the transaction to be executed. Default will be +20 minute. Cannot be in the past.
+        slippageTolerance:
+          type: number
+          description: 'This is the amount of slippage the user can accept for his trade. The unit is bps (1/100 of 1%).
+
+            The value is in ranges [0, 2000], with 10 meaning 0.1%, and 0.1 meaning 0.001%.
+
+            If no value is provided, slippageTolerance will be set to 0.
+
+            '
+        ignoreCappedSlippage:
+          type: boolean
+          description: If true, the slippage tolerance can be any value. Please use with caution.
+        enableGasEstimation:
+          type: boolean
+          description: If true, call eth_gasEstimate to get rpc-based gas estimation for the transaction. Also helps to detect any potential reverts.
+        source:
+          type: string
+          description: The source of the swap to be recorded on-chain. You may use a different value from the `x-client-id` in the header or even have multiple values to track separate sources.
+        referral:
+          type: string
+          description: Referral info to include in the swap transaction's ClientData event.

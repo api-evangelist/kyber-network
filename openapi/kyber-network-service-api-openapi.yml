@@ -579,135 +579,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SwapActionSwap'
-    v1GetOutRouteResponse:
-      type: object
-      properties:
-        code:
-          title: grpc error code
-          type: integer
-          format: int32
-        message:
-          title: grpc error message
-          type: string
-        data:
-          $ref: '#/components/schemas/v1GetOutRouteResponseData'
-        requestId:
-          title: request trace id
-          type: string
-      description: Returns the best route to zap-out from an existing position to the specified pool position.
-    ZapDetailsLiquidityAction:
-      title: added or removed liquidity
-      type: object
-      properties:
-        tokens:
-          title: added or removed token amounts
-          type: array
-          items:
-            $ref: '#/components/schemas/ZapDetailsTokenAmount'
-        fees:
-          title: collected fees
-          type: array
-          items:
-            $ref: '#/components/schemas/ZapDetailsTokenAmount'
-        token0:
-          $ref: '#/components/schemas/ZapDetailsTokenAmount'
-        token1:
-          $ref: '#/components/schemas/ZapDetailsTokenAmount'
-    v1PoolDetails:
-      title: details of the pool
-      type: object
-      properties:
-        category:
-          type: string
-        uniswapV3:
-          $ref: '#/components/schemas/PoolDetailsUniswapV3'
-        uniswapV2:
-          $ref: '#/components/schemas/PoolDetailsUniswapV2'
-        algebraV1:
-          $ref: '#/components/schemas/PoolDetailsAlgebraV1'
-    ZapDetailsActionType:
-      title: type of the zap action
-      type: string
-      description: "- ACTION_TYPE_UNSPECIFIED: Unspecified action\n - ACTION_TYPE_PROTOCOL_FEE: protocol fee\n - ACTION_TYPE_PARTNER_FEE: partner fee\n - ACTION_TYPE_AGGREGATOR_SWAP: aggregator swap\n - ACTION_TYPE_POOL_SWAP: pool swap\n - ACTION_TYPE_ADD_LIQUIDITY: add liquidity\n - ACTION_TYPE_REMOVE_LIQUIDITY: remove liquidity\n - ACTION_TYPE_REFUND: refund"
-      default: ACTION_TYPE_UNSPECIFIED
-      enum:
-      - ACTION_TYPE_UNSPECIFIED
-      - ACTION_TYPE_PROTOCOL_FEE
-      - ACTION_TYPE_PARTNER_FEE
-      - ACTION_TYPE_AGGREGATOR_SWAP
-      - ACTION_TYPE_POOL_SWAP
-      - ACTION_TYPE_ADD_LIQUIDITY
-      - ACTION_TYPE_REMOVE_LIQUIDITY
-      - ACTION_TYPE_REFUND
-    v1ZapDetails:
-      title: details of the zap
-      type: object
-      properties:
-        initialAmountUsd:
-          title: USD value of the source zap token amount
-          type: string
-        actions:
-          title: list of zap actions
-          type: array
-          items:
-            $ref: '#/components/schemas/ZapDetailsAction'
-        finalAmountUsd:
-          title: USD value of the final amount including the added position and the left-over amount
-          type: string
-        priceImpact:
-          title: price impact after zapping of final amount against initial amount
-          type: number
-          format: float
-    PoolDetailsUniswapV2:
-      title: details of the uniswapV2 pool
-      type: object
-      properties:
-        reserve0:
-          title: reserve0 before zap
-          type: string
-        newReserve0:
-          title: reserve0 after zap
-          type: string
-        reserve1:
-          title: reserve1 before zap
-          type: string
-        newReserve1:
-          title: reserve1 after zap
-          type: string
-    ZapDetailsTokenAmount:
-      title: token address and amount in wei and in usd
-      type: object
-      properties:
-        address:
-          title: token address
-          pattern: ^0x[0-9A-Za-z]{40}$
-          type: string
-        amount:
-          title: wei amount of the token
-          type: string
-        amountUsd:
-          title: USD value of the token
-          type: string
-    v1GetOutRouteResponseData:
-      type: object
-      properties:
-        zapDetails:
-          $ref: '#/components/schemas/v1ZapDetails'
-        route:
-          title: the zap route to pass to build API to get call-data
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-          format: byte
-        routerAddress:
-          title: the router address to check approval amount
-          type: string
-        gas:
-          title: rough estimate of gas required for the transaction
-          type: string
-        gasUsd:
-          title: USD value of estimated gas required
-          type: string
-      description: Encompasses returned data.
     v1GetMigrateRouteResponseData:
       type: object
       properties:
@@ -732,31 +603,6 @@ components:
           title: USD value of estimated gas required
           type: string
       description: Encompasses returned data.
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    ZapDetailsFeeAction:
-      title: fee collection
-      type: object
-      properties:
-        pcm:
-          title: fee per cent mille (0.001%) of the source zap amount
-          type: integer
-          format: int64
-        tokens:
-          title: token amounts
-          type: array
-          items:
-            $ref: '#/components/schemas/ZapDetailsTokenAmount'
     PoolDetailsAlgebraV1:
       title: details of the algebraV1 pool
       type: object
@@ -775,67 +621,6 @@ components:
         newSqrtP:
           title: pool sqrt price (times 2^96) after zap
           type: string
-    PoolDetailsUniswapV3:
-      title: details of the uniswapV3 pool
-      type: object
-      properties:
-        tick:
-          title: pool tick before zap
-          type: integer
-          format: int32
-        newTick:
-          title: pool tick after zap
-          type: integer
-          format: int32
-        sqrtP:
-          title: pool sqrt price (times 2^96) before zap
-          type: string
-        newSqrtP:
-          title: pool sqrt price (times 2^96) after zap
-          type: string
-    ZapDetailsRefundAction:
-      title: refund left-over tokens to user
-      type: object
-      properties:
-        tokens:
-          title: refunded token amounts
-          type: array
-          items:
-            $ref: '#/components/schemas/ZapDetailsTokenAmount'
-    v1PositionDetails:
-      title: details of the new position state
-      type: object
-      properties:
-        removedLiquidity:
-          title: how much position liquidity to be removed
-          pattern: \d+
-          type: string
-        removedAmountUsd:
-          title: total USD value of the position to be removed
-          type: string
-        addedLiquidity:
-          title: how much position liquidity to be added
-          pattern: \d+
-          type: string
-        addedAmountUsd:
-          title: total USD value of the position to be added
-          type: string
-    v1GetMigrateRouteResponse:
-      type: object
-      properties:
-        code:
-          title: grpc error code
-          type: integer
-          format: int32
-        message:
-          title: grpc error message
-          type: string
-        data:
-          $ref: '#/components/schemas/v1GetMigrateRouteResponseData'
-        requestId:
-          title: request trace id
-          type: string
-      description: Returns the best route to zap-migrate from an existing position to the specified pool position.
     v1GetInRouteResponseData:
       type: object
       properties:
@@ -860,6 +645,131 @@ components:
           title: USD value of estimated gas required
           type: string
       description: Encompasses returned data.
+    v1PoolDetails:
+      title: details of the pool
+      type: object
+      properties:
+        category:
+          type: string
+        uniswapV3:
+          $ref: '#/components/schemas/PoolDetailsUniswapV3'
+        uniswapV2:
+          $ref: '#/components/schemas/PoolDetailsUniswapV2'
+        algebraV1:
+          $ref: '#/components/schemas/PoolDetailsAlgebraV1'
+    v1GetOutRouteResponseData:
+      type: object
+      properties:
+        zapDetails:
+          $ref: '#/components/schemas/v1ZapDetails'
+        route:
+          title: the zap route to pass to build API to get call-data
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          format: byte
+        routerAddress:
+          title: the router address to check approval amount
+          type: string
+        gas:
+          title: rough estimate of gas required for the transaction
+          type: string
+        gasUsd:
+          title: USD value of estimated gas required
+          type: string
+      description: Encompasses returned data.
+    ZapDetailsRefundAction:
+      title: refund left-over tokens to user
+      type: object
+      properties:
+        tokens:
+          title: refunded token amounts
+          type: array
+          items:
+            $ref: '#/components/schemas/ZapDetailsTokenAmount'
+    ZapDetailsLiquidityAction:
+      title: added or removed liquidity
+      type: object
+      properties:
+        tokens:
+          title: added or removed token amounts
+          type: array
+          items:
+            $ref: '#/components/schemas/ZapDetailsTokenAmount'
+        fees:
+          title: collected fees
+          type: array
+          items:
+            $ref: '#/components/schemas/ZapDetailsTokenAmount'
+        token0:
+          $ref: '#/components/schemas/ZapDetailsTokenAmount'
+        token1:
+          $ref: '#/components/schemas/ZapDetailsTokenAmount'
+    PoolDetailsUniswapV3:
+      title: details of the uniswapV3 pool
+      type: object
+      properties:
+        tick:
+          title: pool tick before zap
+          type: integer
+          format: int32
+        newTick:
+          title: pool tick after zap
+          type: integer
+          format: int32
+        sqrtP:
+          title: pool sqrt price (times 2^96) before zap
+          type: string
+        newSqrtP:
+          title: pool sqrt price (times 2^96) after zap
+          type: string
+    PoolDetailsUniswapV2:
+      title: details of the uniswapV2 pool
+      type: object
+      properties:
+        reserve0:
+          title: reserve0 before zap
+          type: string
+        newReserve0:
+          title: reserve0 after zap
+          type: string
+        reserve1:
+          title: reserve1 before zap
+          type: string
+        newReserve1:
+          title: reserve1 after zap
+          type: string
+    v1ZapDetails:
+      title: details of the zap
+      type: object
+      properties:
+        initialAmountUsd:
+          title: USD value of the source zap token amount
+          type: string
+        actions:
+          title: list of zap actions
+          type: array
+          items:
+            $ref: '#/components/schemas/ZapDetailsAction'
+        finalAmountUsd:
+          title: USD value of the final amount including the added position and the left-over amount
+          type: string
+        priceImpact:
+          title: price impact after zapping of final amount against initial amount
+          type: number
+          format: float
+    ZapDetailsFeeAction:
+      title: fee collection
+      type: object
+      properties:
+        pcm:
+          title: fee per cent mille (0.001%) of the source zap amount
+          type: integer
+          format: int64
+        tokens:
+          title: token amounts
+          type: array
+          items:
+            $ref: '#/components/schemas/ZapDetailsTokenAmount'
     protobufAny:
       type: object
       properties:
@@ -867,6 +777,42 @@ components:
           type: string
       additionalProperties:
         type: object
+    ZapDetailsTokenAmount:
+      title: token address and amount in wei and in usd
+      type: object
+      properties:
+        address:
+          title: token address
+          pattern: ^0x[0-9A-Za-z]{40}$
+          type: string
+        amount:
+          title: wei amount of the token
+          type: string
+        amountUsd:
+          title: USD value of the token
+          type: string
+    ZapDetailsActionType:
+      title: type of the zap action
+      type: string
+      description: "- ACTION_TYPE_UNSPECIFIED: Unspecified action\n - ACTION_TYPE_PROTOCOL_FEE: protocol fee\n - ACTION_TYPE_PARTNER_FEE: partner fee\n - ACTION_TYPE_AGGREGATOR_SWAP: aggregator swap\n - ACTION_TYPE_POOL_SWAP: pool swap\n - ACTION_TYPE_ADD_LIQUIDITY: add liquidity\n - ACTION_TYPE_REMOVE_LIQUIDITY: remove liquidity\n - ACTION_TYPE_REFUND: refund"
+      default: ACTION_TYPE_UNSPECIFIED
+      enum:
+      - ACTION_TYPE_UNSPECIFIED
+      - ACTION_TYPE_PROTOCOL_FEE
+      - ACTION_TYPE_PARTNER_FEE
+      - ACTION_TYPE_AGGREGATOR_SWAP
+      - ACTION_TYPE_POOL_SWAP
+      - ACTION_TYPE_ADD_LIQUIDITY
+      - ACTION_TYPE_REMOVE_LIQUIDITY
+      - ACTION_TYPE_REFUND
+    SwapActionSwap:
+      title: a single swap
+      type: object
+      properties:
+        tokenIn:
+          $ref: '#/components/schemas/ZapDetailsTokenAmount'
+        tokenOut:
+          $ref: '#/components/schemas/ZapDetailsTokenAmount'
     v1GetInRouteResponse:
       type: object
       properties:
@@ -883,14 +829,6 @@ components:
           title: request trace id
           type: string
       description: Returns the best route to zap-in to the specified pool position.
-    SwapActionSwap:
-      title: a single swap
-      type: object
-      properties:
-        tokenIn:
-          $ref: '#/components/schemas/ZapDetailsTokenAmount'
-        tokenOut:
-          $ref: '#/components/schemas/ZapDetailsTokenAmount'
     ZapDetailsAction:
       title: one of the zap actions, specified by the type field
       type: object
@@ -911,3 +849,65 @@ components:
           $ref: '#/components/schemas/ZapDetailsLiquidityAction'
         refund:
           $ref: '#/components/schemas/ZapDetailsRefundAction'
+    v1GetMigrateRouteResponse:
+      type: object
+      properties:
+        code:
+          title: grpc error code
+          type: integer
+          format: int32
+        message:
+          title: grpc error message
+          type: string
+        data:
+          $ref: '#/components/schemas/v1GetMigrateRouteResponseData'
+        requestId:
+          title: request trace id
+          type: string
+      description: Returns the best route to zap-migrate from an existing position to the specified pool position.
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1GetOutRouteResponse:
+      type: object
+      properties:
+        code:
+          title: grpc error code
+          type: integer
+          format: int32
+        message:
+          title: grpc error message
+          type: string
+        data:
+          $ref: '#/components/schemas/v1GetOutRouteResponseData'
+        requestId:
+          title: request trace id
+          type: string
+      description: Returns the best route to zap-out from an existing position to the specified pool position.
+    v1PositionDetails:
+      title: details of the new position state
+      type: object
+      properties:
+        removedLiquidity:
+          title: how much position liquidity to be removed
+          pattern: \d+
+          type: string
+        removedAmountUsd:
+          title: total USD value of the position to be removed
+          type: string
+        addedLiquidity:
+          title: how much position liquidity to be added
+          pattern: \d+
+          type: string
+        addedAmountUsd:
+          title: total USD value of the position to be added
+          type: string
