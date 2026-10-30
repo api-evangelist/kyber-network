@@ -64,30 +64,128 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Kyber Network is the team behind KyberSwap, a multi-chain DeFi liquidity hub and DEX aggregator that routes trades across indexed decentralized exchanges to source the best available on-chain rate.
+Kyber Network is the team behind KyberSwap, a multi-chain DeFi liquidity hub and DEX aggregator that routes trades across indexed decentralized exchanges to source the best available on-chain rate. It publishes three public, unauthenticated EVM APIs: the Aggregator API for instant token swaps with dynamic trade routing, the Limit Order API for gasless price-conditional trades using off-chain relay with on-chain settlement, and the Zap as a Service (ZaaS) API for single-transaction concentrated liquidity provision, exit and migration. KyberSwap also ships embeddable React swap and liquidity widgets, an RFC 9727 API catalog, an llms.txt documentation index, a first-party MCP server and a published Agent Skills plugin, making it one of the more agent-ready providers in the DeFi category. Governance runs through KyberDAO and the KNC token.
 
-## APIs
+**Areas:** Company · Cryptocurrency · DeFi · Blockchain · Decentralized Exchange · Token Swap · Liquidity · Trading · Web3 · Ethereum
 
-| API | Base URL | Purpose |
-|---|---|---|
-| [Aggregator](https://docs.kyberswap.com/developer-guide/aggregator-api) | `https://aggregator-api.kyberswap.com` | Instant token swaps with dynamic trade routing |
-| [Limit Order](https://docs.kyberswap.com/developer-guide/limit-order-api) | `https://limit-order.kyberswap.com` | Gasless price-conditional trades, off-chain relay with on-chain settlement |
-| [Zap as a Service (ZaaS)](https://docs.kyberswap.com/developer-guide/zap-as-a-service-zaas-api) | `https://zap-api.kyberswap.com` | Single-transaction concentrated liquidity entry, exit and migration (HTTP + gRPC) |
+## Kyber Network on APIs.io
 
-All three APIs are public and unauthenticated — no API keys, tokens or secrets. Callers identify themselves with an `x-client-id` header, which tiers rate limits (3 / 10 / 1 rps respectively).
+Everything profiled for Kyber Network is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kyber-network/](https://apis.io/providers/kyber-network/)** — or go straight to one of the APIs or properties below.
 
-## Agent readiness
+### APIs (5)
 
-KyberSwap is unusually agent-ready for the DeFi category:
+- [Kyber Network General API](https://apis.io/apis/kyber-network/kyber-network-general-api/) — The General API from Kyber Network — 2 operation(s) for general.
+- [Kyber Network Maker API](https://apis.io/apis/kyber-network/kyber-network-maker-api/) — The Maker API from Kyber Network — 8 operation(s) for maker.
+- [Kyber Network Service API](https://apis.io/apis/kyber-network/kyber-network-service-api/) — The Service API from Kyber Network — 3 operation(s) for service.
+- [Kyber Network Swap API](https://apis.io/apis/kyber-network/kyber-network-swap-api/) — The swap API from Kyber Network — 3 operation(s) for swap.
+- [Kyber Network Taker API](https://apis.io/apis/kyber-network/kyber-network-taker-api/) — The Taker API from Kyber Network — 4 operation(s) for taker.
 
-- **[MCP server](https://github.com/KyberNetwork/kyberswap-mcp)** — first-party, 13 tools, never holds private keys
-- **[Agent Skills](https://github.com/KyberNetwork/kyberswap-skills)** — 16 published skills for local coding agents
-- **[llms.txt](https://docs.kyberswap.com/llms.txt)** — complete documentation index
-- **[RFC 9727 API catalog](https://kyberswap.com/.well-known/api-catalog)** — machine-readable index of all three services
-- **Content Signals** declared in `robots.txt` on both the app and docs hosts
+### Published properties
 
-## Artifacts
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-OpenAPI specs were harvested from the OpenAPI 3.0.3 documents KyberSwap embeds directly in its own API reference pages; the ZaaS proto is captured verbatim from the gRPC reference.
+#### MCP servers (1)
 
-Backed by: pantera-capital — https://kyber.network/
+Model Context Protocol servers that expose the API to agents.
+
+- [kyberswap](https://apis.io/servers/kyber-network/kyberswap/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [KyberSwap Aggregator General API](https://apis.io/collections/kyber-network/open-kyber-network-general-api/)
+- [KyberSwap Aggregator General Maker API](https://apis.io/collections/kyber-network/open-kyber-network-maker-api/)
+- [KyberSwap Aggregator General Service API](https://apis.io/collections/kyber-network/open-kyber-network-service-api/)
+- [KyberSwap Aggregator General swap API](https://apis.io/collections/kyber-network/open-kyber-network-swap-api/)
+- [KyberSwap Aggregator General Taker API](https://apis.io/collections/kyber-network/open-kyber-network-taker-api/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Kyber Network Aggregator Overlay](https://apis.io/overlays/kyber-network/kyber-network-aggregator-overlay/)
+- [Kyber Network Limit Order Overlay](https://apis.io/overlays/kyber-network/kyber-network-limit-order-overlay/)
+- [Kyber Network Zaas Overlay](https://apis.io/overlays/kyber-network/kyber-network-zaas-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Kyber Network Authentication](https://apis.io/security/kyber-network/kyber-network-authentication/)
+- [Kyber Network Domain Security](https://apis.io/security/kyber-network/kyber-network-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Kyber Network Rate Limits](https://apis.io/rate-limits/kyber-network/kyber-network-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://kyber.network/)
+- [Documentation](https://docs.kyberswap.com/)
+- [Getting started](https://docs.kyberswap.com/developer-guide/start-here)
+- [API reference](https://docs.kyberswap.com/developer-guide/aggregator-api/aggregator-api-specification)
+- [Pricing](https://docs.kyberswap.com/getting-started/fee-schedule)
+- [Sign up](https://kyberswap.com/swap)
+- [Support](https://discord.gg/kyberswap)
+- [Blog](https://blog.kyberswap.com/)
+- [GitHub](https://github.com/KyberNetwork)
+
+## API Evangelist rating
+
+**Kin Score 48.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 43.6 |
+| Contract governance | 18.2 |
+| Operational transparency | 57.9 |
+| Developer ergonomics | 71.4 |
+| Access clarity | 31.6 |
+
+**Agent readiness 39.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | yes |
+| Consent Identity | yes |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.4** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kyber-network/](https://apis.io/providers/kyber-network/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Kyber Network: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kyber-network/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
